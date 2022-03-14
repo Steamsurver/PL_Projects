@@ -22,17 +22,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception{
-        int FLAG = 0;
-
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
-
-        stage.setTitle("Hello JavaFX");
-        stage.setWidth(250);
-        stage.setHeight(200);
-
         stage.show();
 
     }
