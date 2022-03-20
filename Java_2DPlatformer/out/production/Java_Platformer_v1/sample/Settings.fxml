@@ -5,23 +5,30 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="APane_settings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane fx:id="APane_settings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_Settings">
    <children>
-      <Label fx:id="Label_resolution" layoutX="57.0" layoutY="129.0" onMouseReleased="#action_resolution" text="Разрешение" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="129.0">
+      <ImageView fx:id="Image_FoneSettings" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Textures/MenuFone2.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="Label_resolution" layoutX="57.0" layoutY="129.0" onMouseReleased="#action_resolution" text="Разрешение" textFill="WHITE" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="129.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="Label_setting_back" layoutX="57.0" layoutY="312.0" onMouseReleased="#Action_setting_back" text="Назад" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="57.0">
+      <Label fx:id="Label_setting_back" layoutX="57.0" layoutY="312.0" onMouseReleased="#Action_setting_back" text="Назад" textFill="WHITE" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="57.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="Setting_sign" layoutX="211.0" layoutY="21.0" prefHeight="53.0" prefWidth="178.0" text="Настройки">
+      <Label fx:id="Setting_sign" layoutX="211.0" layoutY="21.0" prefHeight="53.0" prefWidth="178.0" text="Настройки" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
@@ -34,14 +41,14 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
          <children>
-            <RadioButton fx:id="Button_1600x900" mnemonicParsing="false" onAction="#Resolution_actionRB" selected="true" text="1600х900">
+            <RadioButton fx:id="Button_1920x1080" mnemonicParsing="false" onAction="#Resolution_actionRB" selected="true" text="1920x1080" textFill="WHITE">
                <toggleGroup>
                   <ToggleGroup fx:id="RB_Group" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="Button_1400x900" mnemonicParsing="false" onAction="#Resolution_actionRB" text="1400х900" toggleGroup="$RB_Group" />
-            <RadioButton fx:id="Button_1280x720" mnemonicParsing="false" onAction="#Resolution_actionRB" text="1280х720" toggleGroup="$RB_Group" />
-            <RadioButton fx:id="Button_800x600" mnemonicParsing="false" onAction="#Resolution_actionRB" text="800х600" toggleGroup="$RB_Group" />
-            <RadioButton fx:id="Button_640x480" mnemonicParsing="false" onAction="#Resolution_actionRB" text="640х480" toggleGroup="$RB_Group" />
+            <RadioButton fx:id="Button_1600x900" mnemonicParsing="false" onAction="#Resolution_actionRB" text="1600x900" textFill="WHITE" toggleGroup="$RB_Group" />
+            <RadioButton fx:id="Button_1280x720" mnemonicParsing="false" onAction="#Resolution_actionRB" text="1280х720" textFill="WHITE" toggleGroup="$RB_Group" />
+            <RadioButton fx:id="Button_960х540" mnemonicParsing="false" onAction="#Resolution_actionRB" text="960х540" textFill="WHITE" toggleGroup="$RB_Group" />
+            <RadioButton fx:id="Button_640х360" mnemonicParsing="false" onAction="#Resolution_actionRB" text="640х360" textFill="WHITE" toggleGroup="$RB_Group" />
          </children>
       </FlowPane>
    </children>

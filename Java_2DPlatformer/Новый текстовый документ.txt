@@ -1,0 +1,11 @@
+Resolution_Height:
+1080
+
+Resolution_Width:
+1920
+
+Stage_LayoutX:
+90
+
+Stage_LayoutY:
+90

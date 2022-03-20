@@ -1,0 +1,12 @@
+Resolution_Height:
+540
+
+Resolution_Width:
+960
+
+Stage_LayoutX:
+550
+
+Stage_LayoutY:
+220
+
