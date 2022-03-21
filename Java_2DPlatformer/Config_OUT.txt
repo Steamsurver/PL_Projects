@@ -1,12 +1,12 @@
 Resolution_Height:
-540
+720
 
 Resolution_Width:
-960
+1280
 
 Stage_LayoutX:
-550
+370
 
 Stage_LayoutY:
-220
+160
 

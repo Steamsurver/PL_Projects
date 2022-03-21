@@ -1,8 +1,11 @@
 package sample;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.*;
 
 import javafx.scene.control.Label;
@@ -13,7 +16,8 @@ public class GlobalVariable {
     public static int Stage_LayoutX;
     public static int Stage_LayoutY;
 
-
+    public static Font main_font = Font.loadFont("file:src/Font/PressStart2P-Regular.ttf", 30);
+    public static Image fone_menu_name = new Image("Textures/Main_Fone_Sprite.png");
 
 
 

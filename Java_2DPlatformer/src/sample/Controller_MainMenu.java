@@ -22,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ZoomEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
@@ -61,10 +62,16 @@ public class Controller_MainMenu implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Image_FoneMenu.setFitWidth(GlobalVariable.Resolution_Width);
         Image_FoneMenu.setFitHeight(GlobalVariable.Resolution_Height);
+        Image_FoneMenu.setImage(GlobalVariable.fone_menu_name);
+
         Label_settings.setLayoutX(GlobalVariable.Resolution_Width/2 - 191/2);
         Label_settings.setLayoutY(GlobalVariable.Resolution_Height/2 - 50);
-        Label_exit.setLayoutX(GlobalVariable.Resolution_Width/2 - 117/2);
+
+        Label_exit.setLayoutX(GlobalVariable.Resolution_Width/2 - 117/2 + 20);
         Label_exit.setLayoutY(GlobalVariable.Resolution_Height/2);
+
+        Label_settings.setFont(GlobalVariable.main_font);
+        Label_exit.setFont(GlobalVariable.main_font);
     }
 
 
