@@ -1,0 +1,2 @@
+"./Build/run.exe"
+PAUSE
