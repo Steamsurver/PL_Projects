@@ -15,10 +15,22 @@ public class GlobalVariable {
     public static int Resolution_Width;
     public static int Stage_LayoutX;
     public static int Stage_LayoutY;
+    public static Boolean FullScreenOn;
+    public static Boolean FullScreenOff;
+
+
 
     public static Font main_font = Font.loadFont("file:src/Font/PressStart2P-Regular.ttf", 30);
+    public static Font small_main_font = Font.loadFont("file:src/Font/PressStart2P-Regular.ttf", 12);
     public static Image fone_menu_name = new Image("Textures/Main_Fone_Sprite.png");
-
+    public static Image Button_NGTexture_pressed = new Image("Textures/Button_textures/ButtonNewGamePressed.png");
+    public static Image Button_NGTexture = new Image("Textures/Button_textures/ButtonNewGame.png");
+    public static Image Button_Settings_pressed = new Image("Textures/Button_textures/ButtonSettingPressed.png");
+    public static Image Button_Settings = new Image("Textures/Button_textures/ButtonSetting.png");
+    public static Image Button_Exit_pressed = new Image("Textures/Button_textures/ButtonExitPressed.png");
+    public static Image Button_Exit = new Image("Textures/Button_textures/ButtonExit.png");
+    public static Image Button_Back_pressed = new Image("Textures/Button_textures/ButtonBackPressed.png");
+    public static Image Button_Back = new Image("Textures/Button_textures/ButtonBack.png");
 
 
     public static void reader()throws Exception {//чтение построчно
@@ -45,6 +57,24 @@ public class GlobalVariable {
                 Stage_LayoutY = Integer.parseInt(BuffReader.readLine());
                 BuffWriter.append("Stage_LayoutY:\n");
                 BuffWriter.append(String.valueOf(Stage_LayoutY)).append(String.valueOf('\n')).append(String.valueOf('\n'));
+            }
+            if(string_config.equals("FullScreenOn:")){
+                if(BuffReader.readLine().equals("1")){
+                    FullScreenOn = true;
+                }else{
+                    FullScreenOn = false;
+                }
+                BuffWriter.append("FullScreenOn:\n");
+                BuffWriter.append(String.valueOf(FullScreenOn)).append(String.valueOf('\n')).append(String.valueOf('\n'));
+            }
+            if(string_config.equals("FullScreenOff:")){
+                if(BuffReader.readLine().equals("1")){
+                    FullScreenOff = true;
+                }else {
+                    FullScreenOff = false;
+                }
+                BuffWriter.append("FullScreenOff:\n");
+                BuffWriter.append(String.valueOf(FullScreenOff)).append(String.valueOf('\n')).append(String.valueOf('\n'));
             }
         }
         BuffWriter.flush();
@@ -73,6 +103,20 @@ public class GlobalVariable {
             if(string_rider.equals("Stage_LayoutY:")) {
                 BuffWriter.append("Stage_LayoutY:\n");
                 BuffWriter.append(String.valueOf(Stage_LayoutY)).append(String.valueOf('\n')).append(String.valueOf('\n'));
+            }
+            if(string_rider.equals("FullScreenOn:")){
+                BuffWriter.append("FullScreenOn:\n");
+                if(FullScreenOn)
+                BuffWriter.append(String.valueOf(1)).append(String.valueOf('\n')).append(String.valueOf('\n'));
+                else
+                    BuffWriter.append(String.valueOf(0)).append(String.valueOf('\n')).append(String.valueOf('\n'));
+            }
+            if(string_rider.equals("FullScreenOff:")){
+                BuffWriter.append("FullScreenOff:\n");
+                if(FullScreenOff)
+                BuffWriter.append(String.valueOf(1)).append(String.valueOf('\n')).append(String.valueOf('\n'));
+                else
+                    BuffWriter.append(String.valueOf(0)).append(String.valueOf('\n')).append(String.valueOf('\n'));
             }
         }
         BuffReader.close();
@@ -103,6 +147,9 @@ public class GlobalVariable {
 
     public static void change_text_resolution(Label label){//смена разрешения
        label.setLayoutX(Resolution_Width/2 - 85);
+    }
+    public static void change_image_resolution(ImageView image){//смена разрешения
+        image.setX(Resolution_Width/2 - image.getFitWidth());
     }
 
 }

@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller_Settings implements Initializable {
+    Boolean Resolution_Flag = true;
     public ToggleGroup RB_Group;
     @FXML
     public AnchorPane APane_settings;
@@ -24,7 +25,9 @@ public class Controller_Settings implements Initializable {
     @FXML
     private FlowPane Flow_settings_pane;
     @FXML
-    private Label Label_resolution, Label_setting_back, Label_setting_sign;
+    private Label Label_resolution, Label_setting_sign, FullScreenOn_label, FullScreenOff_label;
+    @FXML
+    private ImageView Button_back;
     @FXML
     private RadioButton Button_1920x1080;
     @FXML
@@ -58,20 +61,56 @@ public class Controller_Settings implements Initializable {
             GlobalVariable.change_text_resolution(Label_setting_sign);
         }
     }
+    @FXML
+    void FullScree_OFF(MouseEvent event) {
+        Main.stage.setFullScreen(false);
+        GlobalVariable.FullScreenOff = true;
+        GlobalVariable.FullScreenOn = false;
+        FullScreenOff_label.setVisible(false);
+        FullScreenOn_label.setVisible(true);
+    }
 
     @FXML
-    void Action_setting_back(MouseEvent event) throws IOException {
+    void FullScree_ON(MouseEvent event) {
+        Main.stage.setFullScreen(true);
+        GlobalVariable.FullScreenOff = false;
+        GlobalVariable.FullScreenOn = true;
+        FullScreenOff_label.setVisible(true);
+        FullScreenOn_label.setVisible(false);
+    }
+
+
+    @FXML
+    void action_resolution(MouseEvent event) {
+        if(Resolution_Flag){
+        Flow_settings_pane.setVisible(true);
+        Resolution_Flag = false;
+        }else{
+            Flow_settings_pane.setVisible(false);
+            Resolution_Flag = true;
+        }
+
+    }
+
+
+    @FXML
+    void Button_settings_action_released(MouseEvent event)throws IOException {
         Utils.Resource.scenes.remove("scene_MainMenu");
         Utils.Resource.load_scene(null, "scene_MainMenu", "MainMenu.fxml");
 
         Main.stage.setScene(Utils.Resource.scenes.get("scene_MainMenu"));
         Main.stage.show();
     }
+    @FXML
+    void Button_back_action_entered(MouseEvent event) {
+        Button_back.setImage(GlobalVariable.Button_Back_pressed);
+    }
 
     @FXML
-    void action_resolution(MouseEvent event) {
-        Flow_settings_pane.setVisible(true);
+    void Button_back_action_exit(MouseEvent event) {
+        Button_back.setImage(GlobalVariable.Button_Back);
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -81,8 +120,9 @@ public class Controller_Settings implements Initializable {
 
         Label_setting_sign.setLayoutX(GlobalVariable.Resolution_Width/2 - 190/2);
         Label_resolution.setFont(GlobalVariable.main_font);
-        Label_setting_back.setFont(GlobalVariable.main_font);
         Label_setting_sign.setFont(GlobalVariable.main_font);
+        FullScreenOn_label.setFont(GlobalVariable.main_font);
+        FullScreenOff_label.setFont(GlobalVariable.main_font);
 
         Button_1920x1080.setFont(GlobalVariable.main_font);
         Button_1920x1080.setScaleX(0.5);
@@ -106,6 +146,10 @@ public class Controller_Settings implements Initializable {
         Button_640х360.setScaleX(0.5);
         Button_640х360.setScaleY(0.5);
 
-
+        if(GlobalVariable.FullScreenOn){
+            FullScreenOff_label.setVisible(true);
+        }else
+            FullScreenOn_label.setVisible(true);
     }
+
 }

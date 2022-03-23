@@ -4,7 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="pane_setting" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_MainMenu">
    <children>
@@ -13,15 +13,25 @@
             <Image url="@../Textures/MenuFone2.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="Label_settings" layoutX="211.0" layoutY="200.0" onMouseReleased="#action_settings" text="Настройки" textFill="WHITE">
-         <font>
-            <Font name="Pixel_font" size="36.0" />
-         </font>
-      </Label>
-      <Label fx:id="Label_exit" layoutX="248.0" layoutY="269.0" onMouseReleased="#action_exit" text="Выход" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
+      <VBox fx:id="VBboxButtons" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0">
+         <children>
+            <ImageView fx:id="Button_NewGame" fitHeight="120.0" fitWidth="400.0" onMouseEntered="#Button_NewGame_action_entered" onMouseExited="#Button_NewGame_action_exited" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Textures/Button_textures/ButtonNewGame.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Button_Setting" fitHeight="120.0" fitWidth="400.0" onMouseEntered="#Button_settings_action_entered" onMouseExited="#Button_settings_action_exited" onMouseReleased="#Button_settings_action_released" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Textures/Button_textures/ButtonSetting.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Button_Exit" fitHeight="120.0" fitWidth="400.0" onMouseEntered="#Button_exit_action_entered" onMouseExited="#Button_exit_action_exit" onMouseReleased="#Button_exit_action_released" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Textures/Button_textures/ButtonExit.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <Label fx:id="Label_version" layoutX="20.0" layoutY="370.0" prefHeight="19.0" prefWidth="400.0" text="Version: early alpha v0.0.1 " textFill="WHITE" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="20.0" />
    </children>
 </AnchorPane>

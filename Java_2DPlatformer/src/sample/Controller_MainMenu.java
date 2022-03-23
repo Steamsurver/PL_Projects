@@ -22,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ZoomEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -43,19 +44,56 @@ public class Controller_MainMenu implements Initializable {
     @FXML
     public ImageView Image_FoneMenu;
     @FXML
-    Label Label_settings;
+    private Label Label_version;
     @FXML
-    Label Label_exit;
+    private ImageView Button_NewGame;
+    @FXML
+    private ImageView Button_Setting;
+    @FXML
+    private ImageView Button_Exit;
+    @FXML
+    private VBox VBboxButtons;
+
 
     @FXML
-    void action_settings(MouseEvent event) throws IOException {
-        Main.stage.setScene(Utils.Resource.scenes.get("scene_Settings"));
-        Main.stage.show();
-
+    void Button_exit_action_released(MouseEvent event) {
+        Platform.exit();
     }
     @FXML
-    void action_exit(MouseEvent event) {
-        Platform.exit();
+    void Button_exit_action_entered(MouseEvent event) {
+        Button_Exit.setImage(GlobalVariable.Button_Exit_pressed);
+    }
+    @FXML
+    void Button_exit_action_exit(MouseEvent event) {
+        Button_Exit.setImage(GlobalVariable.Button_Exit);
+    }
+
+
+
+    @FXML
+    void Button_settings_action_released(MouseEvent event) {
+        Button_Setting.setImage(GlobalVariable.Button_NGTexture);
+        Main.stage.setScene(Utils.Resource.scenes.get("scene_Settings"));
+        Main.stage.show();
+    }
+    @FXML
+    void Button_settings_action_entered(MouseEvent event) {
+        Button_Setting.setImage(GlobalVariable.Button_Settings_pressed);
+    }
+
+    @FXML
+    void Button_settings_action_exited(MouseEvent event) {
+        Button_Setting.setImage(GlobalVariable.Button_Settings);
+    }
+
+    @FXML
+    void Button_NewGame_action_entered(MouseEvent event) {
+        Button_NewGame.setImage(GlobalVariable.Button_NGTexture_pressed);
+    }
+
+    @FXML
+    void Button_NewGame_action_exited(MouseEvent event) {
+        Button_NewGame.setImage(GlobalVariable.Button_NGTexture);
     }
 
     @Override
@@ -64,14 +102,10 @@ public class Controller_MainMenu implements Initializable {
         Image_FoneMenu.setFitHeight(GlobalVariable.Resolution_Height);
         Image_FoneMenu.setImage(GlobalVariable.fone_menu_name);
 
-        Label_settings.setLayoutX(GlobalVariable.Resolution_Width/2 - 191/2);
-        Label_settings.setLayoutY(GlobalVariable.Resolution_Height/2 - 50);
+        VBboxButtons.setPrefWidth(GlobalVariable.Resolution_Width);
+        VBboxButtons.setPrefHeight(GlobalVariable.Resolution_Height);
 
-        Label_exit.setLayoutX(GlobalVariable.Resolution_Width/2 - 117/2 + 20);
-        Label_exit.setLayoutY(GlobalVariable.Resolution_Height/2);
-
-        Label_settings.setFont(GlobalVariable.main_font);
-        Label_exit.setFont(GlobalVariable.main_font);
+        Label_version.setFont(GlobalVariable.small_main_font);
     }
 
 

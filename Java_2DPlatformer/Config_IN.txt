@@ -10,3 +10,9 @@ Stage_LayoutX:
 Stage_LayoutY:
 90
 
+FullScreenOn:
+0
+
+FullScreenOff:
+1
+

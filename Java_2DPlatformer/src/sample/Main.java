@@ -36,7 +36,6 @@ public class Main extends Application {
 
         primaryStage.setScene(Utils.Resource.scenes.get("scene_MainMenu"));
         primaryStage.show();
-
     }
 
 
