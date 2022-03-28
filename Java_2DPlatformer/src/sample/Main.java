@@ -55,7 +55,7 @@ public class Main extends Application {
 
     @Override
     public void stop() throws Exception {
-        GlobalVariable.writer();
+        GlobalVariable.writer();//выкидываем конфиги
         super.stop();
     }
 

@@ -1,18 +1,15 @@
 Resolution_Height:
-900
+720
 
 Resolution_Width:
-1600
+1280
 
 Stage_LayoutX:
-290
+370
 
 Stage_LayoutY:
-90
+160
 
 FullScreenOn:
 0
-
-FullScreenOff:
-1
 

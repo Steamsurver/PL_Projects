@@ -1,5 +1,6 @@
 package sample;
 
+import EventManager.EventManager;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
@@ -11,12 +12,14 @@ import java.io.*;
 import javafx.scene.control.Label;
 
 public class GlobalVariable {
+   public static EventManager eventManager = new EventManager();
+
+
     public static int Resolution_Height;
     public static int Resolution_Width;
     public static int Stage_LayoutX;
     public static int Stage_LayoutY;
     public static Boolean FullScreenOn;
-    public static Boolean FullScreenOff;
 
 
 
@@ -33,7 +36,7 @@ public class GlobalVariable {
     public static Image Button_Back = new Image("Textures/Button_textures/ButtonBack.png");
 
 
-    public static void reader()throws Exception {//чтение построчно
+    public static void reader()throws Exception {//чтение построчно файла Config_IN и запись в Config_OUT
         BufferedReader BuffReader = new BufferedReader(new FileReader("Config_IN.txt"));
         BufferedWriter BuffWriter = new BufferedWriter(new FileWriter("Config_OUT.txt"));
         String string_config;
@@ -59,22 +62,15 @@ public class GlobalVariable {
                 BuffWriter.append(String.valueOf(Stage_LayoutY)).append(String.valueOf('\n')).append(String.valueOf('\n'));
             }
             if(string_config.equals("FullScreenOn:")){
+                BuffWriter.append("FullScreenOn:\n");
                 if(BuffReader.readLine().equals("1")){
                     FullScreenOn = true;
+                    BuffWriter.append(String.valueOf(1)).append(String.valueOf('\n')).append(String.valueOf('\n'));
                 }else{
                     FullScreenOn = false;
+                    BuffWriter.append(String.valueOf(0)).append(String.valueOf('\n')).append(String.valueOf('\n'));
                 }
-                BuffWriter.append("FullScreenOn:\n");
-                BuffWriter.append(String.valueOf(FullScreenOn)).append(String.valueOf('\n')).append(String.valueOf('\n'));
-            }
-            if(string_config.equals("FullScreenOff:")){
-                if(BuffReader.readLine().equals("1")){
-                    FullScreenOff = true;
-                }else {
-                    FullScreenOff = false;
-                }
-                BuffWriter.append("FullScreenOff:\n");
-                BuffWriter.append(String.valueOf(FullScreenOff)).append(String.valueOf('\n')).append(String.valueOf('\n'));
+
             }
         }
         BuffWriter.flush();
@@ -82,7 +78,7 @@ public class GlobalVariable {
         BuffWriter.close();
     }
 
-    public static void writer()throws Exception {//чтение построчно
+    public static void writer()throws Exception {//чтение построчно из Config_OUT и запись в Config_IN
         BufferedWriter BuffWriter = new BufferedWriter(new FileWriter("Config_IN.txt"));
         BufferedReader BuffReader = new BufferedReader(new FileReader("Config_OUT.txt"));
         String string_rider;
@@ -111,13 +107,6 @@ public class GlobalVariable {
                 else
                     BuffWriter.append(String.valueOf(0)).append(String.valueOf('\n')).append(String.valueOf('\n'));
             }
-            if(string_rider.equals("FullScreenOff:")){
-                BuffWriter.append("FullScreenOff:\n");
-                if(FullScreenOff)
-                BuffWriter.append(String.valueOf(1)).append(String.valueOf('\n')).append(String.valueOf('\n'));
-                else
-                    BuffWriter.append(String.valueOf(0)).append(String.valueOf('\n')).append(String.valueOf('\n'));
-            }
         }
         BuffReader.close();
         BuffWriter.flush();
@@ -130,6 +119,7 @@ public class GlobalVariable {
         stage.setWidth(GlobalVariable.Resolution_Width);
         stage.setX(Stage_LayoutX);
         stage.setY(Stage_LayoutY);
+        stage.setFullScreen(FullScreenOn);
     }
 
     public static void change_resolution(Stage stage, ImageView image_view, int width, int height, int x, int y){//смена разрешения

@@ -1,5 +1,6 @@
 package sample;
 
+import EventManager.EventObserver;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller_Settings implements Initializable {
+    SettingObserver settingObserver = new SettingObserver();
     Boolean Resolution_Flag = true;
     public ToggleGroup RB_Group;
     @FXML
@@ -64,7 +66,6 @@ public class Controller_Settings implements Initializable {
     @FXML
     void FullScree_OFF(MouseEvent event) {
         Main.stage.setFullScreen(false);
-        GlobalVariable.FullScreenOff = true;
         GlobalVariable.FullScreenOn = false;
         FullScreenOff_label.setVisible(false);
         FullScreenOn_label.setVisible(true);
@@ -73,7 +74,6 @@ public class Controller_Settings implements Initializable {
     @FXML
     void FullScree_ON(MouseEvent event) {
         Main.stage.setFullScreen(true);
-        GlobalVariable.FullScreenOff = false;
         GlobalVariable.FullScreenOn = true;
         FullScreenOff_label.setVisible(true);
         FullScreenOn_label.setVisible(false);
@@ -89,7 +89,6 @@ public class Controller_Settings implements Initializable {
             Flow_settings_pane.setVisible(false);
             Resolution_Flag = true;
         }
-
     }
 
 
@@ -99,6 +98,7 @@ public class Controller_Settings implements Initializable {
         Utils.Resource.load_scene(null, "scene_MainMenu", "MainMenu.fxml");
 
         Main.stage.setScene(Utils.Resource.scenes.get("scene_MainMenu"));
+        GlobalVariable.eventManager.notifyObservers();//обновляем настройки
         Main.stage.show();
     }
     @FXML
@@ -114,6 +114,8 @@ public class Controller_Settings implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        GlobalVariable.eventManager.registerObserver(settingObserver);//регистрируем наблюдателя за меню
+
         Image_FoneSettings.setFitWidth(GlobalVariable.Resolution_Width);
         Image_FoneSettings.setFitHeight(GlobalVariable.Resolution_Height);
         Image_FoneSettings.setImage(GlobalVariable.fone_menu_name);
@@ -146,10 +148,23 @@ public class Controller_Settings implements Initializable {
         Button_640х360.setScaleX(0.5);
         Button_640х360.setScaleY(0.5);
 
-        if(GlobalVariable.FullScreenOn){
+        if(GlobalVariable.FullScreenOn){//надпись полноэкранный режим
             FullScreenOff_label.setVisible(true);
         }else
             FullScreenOn_label.setVisible(true);
+    }
+
+    //-----------------------------------------------Observer-----------------------------------------------
+
+    public class SettingObserver implements EventObserver{
+        @Override
+        public void update(){
+            Main.stage.setFullScreen(GlobalVariable.FullScreenOn);
+
+            GlobalVariable.change_resolution(Main.stage, Image_FoneSettings,
+                    GlobalVariable.Resolution_Width, GlobalVariable.Resolution_Height,
+                    GlobalVariable.Stage_LayoutX, GlobalVariable.Stage_LayoutY);
+        }
     }
 
 }

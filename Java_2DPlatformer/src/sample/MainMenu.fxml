@@ -13,7 +13,7 @@
             <Image url="@../Textures/MenuFone2.jpg" />
          </image>
       </ImageView>
-      <VBox fx:id="VBboxButtons" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0">
+      <VBox fx:id="VBoxButtons" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0">
          <children>
             <ImageView fx:id="Button_NewGame" fitHeight="120.0" fitWidth="400.0" onMouseEntered="#Button_NewGame_action_entered" onMouseExited="#Button_NewGame_action_exited" pickOnBounds="true" preserveRatio="true">
                <image>

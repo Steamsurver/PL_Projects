@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="APane_settings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_Settings">
+<AnchorPane fx:id="APane_settings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_Settings">
    <children>
       <ImageView fx:id="Image_FoneSettings" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Textures/MenuFone2.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="Label_resolution" layoutX="57.0" layoutY="129.0" onMouseReleased="#action_resolution" text="Разрешение" textFill="WHITE" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="129.0">
+      <Label fx:id="Label_resolution" layoutX="40.0" layoutY="129.0" onMouseReleased="#action_resolution" text="Разрешение" textFill="WHITE" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="129.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -33,7 +29,7 @@
             <Image url="@../Textures/Button_textures/ButtonBack.png" />
          </image>
       </ImageView>
-      <FlowPane fx:id="Flow_settings_pane" layoutX="330.0" layoutY="129.0" nodeOrientation="LEFT_TO_RIGHT" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" rowValignment="TOP" visible="false" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="129.0">
+      <FlowPane fx:id="Flow_settings_pane" layoutX="380.0" layoutY="129.0" nodeOrientation="LEFT_TO_RIGHT" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" rowValignment="TOP" visible="false" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="129.0">
          <opaqueInsets>
             <Insets bottom="5.0" left="5.0" right="5.0" top="255.0" />
          </opaqueInsets>
@@ -66,12 +62,12 @@
                </FlowPane.margin></RadioButton>
          </children>
       </FlowPane>
-      <Label fx:id="FullScreenOn_label" layoutX="57.0" layoutY="169.0" onMouseReleased="#FullScree_ON" text="Полноэкранный режим" textFill="WHITE" visible="false">
+      <Label fx:id="FullScreenOn_label" layoutX="40.0" layoutY="169.0" onMouseReleased="#FullScree_ON" text="Полноэкранный режим" textFill="WHITE" visible="false">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="FullScreenOff_label" layoutX="57.0" layoutY="169.0" onMouseReleased="#FullScree_OFF" text="Оконный режим" textFill="WHITE" visible="false">
+      <Label fx:id="FullScreenOff_label" layoutX="40.0" layoutY="169.0" onMouseReleased="#FullScree_OFF" text="Оконный режим" textFill="WHITE" visible="false">
          <font>
             <Font size="24.0" />
          </font>
