@@ -11,5 +11,5 @@ Stage_LayoutY:
 160
 
 FullScreenOn:
-1
+0
 

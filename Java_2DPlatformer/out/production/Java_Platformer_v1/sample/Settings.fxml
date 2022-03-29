@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="APane_settings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_Settings">
    <children>
-      <ImageView fx:id="Image_FoneSettings" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Image_FoneSettings" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
          <image>
             <Image url="@../Textures/MenuFone2.jpg" />
          </image>

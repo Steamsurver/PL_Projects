@@ -36,6 +36,7 @@ public class GlobalVariable {
     public static Image Button_Back = new Image("Textures/Button_textures/ButtonBack.png");
 
 
+
     public static void reader()throws Exception {//чтение построчно файла Config_IN и запись в Config_OUT
         BufferedReader BuffReader = new BufferedReader(new FileReader("Config_IN.txt"));
         BufferedWriter BuffWriter = new BufferedWriter(new FileWriter("Config_OUT.txt"));

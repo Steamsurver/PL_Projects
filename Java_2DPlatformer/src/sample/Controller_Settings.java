@@ -152,6 +152,8 @@ public class Controller_Settings implements Initializable {
             FullScreenOff_label.setVisible(true);
         }else
             FullScreenOn_label.setVisible(true);
+
+        System.out.println("Start settings");
     }
 
     //-----------------------------------------------Observer-----------------------------------------------

@@ -20,5 +20,9 @@ public class Utils {//ласс для работы с ресурсами
             scenes.put(scene_name, scene);
         }
 
+        public static void load_scene(Scene scene, String scene_name) throws IOException
+        {//подгрузка сцен
+            scenes.put(scene_name, scene);
+        }
     }
 }

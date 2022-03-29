@@ -77,7 +77,11 @@ public class Controller_MainMenu implements Initializable {
     void Button_NewGame_action_exited(MouseEvent event) {
         Button_NewGame.setImage(GlobalVariable.Button_NGTexture);
     }
-
+    @FXML
+    void Button_NewGame_action_released(MouseEvent mouseEvent) {
+        Main.stage.setScene(Utils.Resource.scenes.get("Game"));
+        Main.stage.show();
+    }
 
 
     @Override
@@ -91,8 +95,9 @@ public class Controller_MainMenu implements Initializable {
         VBoxButtons.setPrefHeight(GlobalVariable.Resolution_Height);
 
         Label_version.setFont(GlobalVariable.small_main_font);
-
+        System.out.println("Start");
     }
+
 
     //-------------------------------------------------------------------------------------------------
     public class MainMenuObserver implements EventObserver {//Наблюдатель за меню
