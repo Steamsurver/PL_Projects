@@ -2,6 +2,7 @@
 using HRESULT_ = int;
 using IID_ = int;
 using CLSID_ = int;
+using ULONG_ = int;
 
 const IID_ ID_IUnknown_ = 0; // id iunknown
 const IID_ ID_Interface_1_ = 1; 
@@ -23,7 +24,11 @@ const CLSID_ Server_id_2 = 1; // id сервера 2
 //-------------------------IUnknown----------------------------
 class IUnknown_
 {
+private:
 public:
+	virtual void Addref() = 0;
+	virtual	void Release() = 0;
+	virtual ULONG_ GetRef() = 0;
 	virtual HRESULT_ QueryInterface(IID_ IID, void** pointer) = 0;
 };
 
@@ -59,12 +64,16 @@ HRESULT_ GetClassObject(CLSID_ id_server, IID_ IID, void** pointer);
 class Server : public Interface_1, public Interface_2, public ICLassFactory_{
 private:
 	int test_var;
+	int reference = 0;
 public:
 	Server();
 	~Server();
 
 	HRESULT_ QueryInterface(IID_ IID, void** pointer);
 	HRESULT_ CreateInstance_factory(IID_ IID, void** pointer);
+	void Addref();
+	void Release();
+	ULONG_ GetRef();
 	void Funx_Interface_1();
 	void Funx_Interface_2();
 };
@@ -72,12 +81,16 @@ public:
 class Server_2 : public Interface_2, public ICLassFactory_ {
 private:
 	int test_var;
+	int reference = 0;
 public:
 	Server_2();
 	~Server_2();
 
 	HRESULT_ QueryInterface(IID_ IID, void** pointer);
 	HRESULT_ CreateInstance_factory(IID_ IID, void** pointer);
+	void Addref();
+	void Release();
+	ULONG_ GetRef();
 	void Funx_Interface_2();
 };
 

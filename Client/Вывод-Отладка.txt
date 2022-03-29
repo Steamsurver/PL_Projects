@@ -1,0 +1,14 @@
+﻿"CreateInst_v2.exe" (Win32). Загружено "D:\CalcCOP\new\Client\Debug\CreateInst_v2.exe". Символы загружены.
+"CreateInst_v2.exe" (Win32). Загружено "C:\Windows\SysWOW64\ntdll.dll". 
+"CreateInst_v2.exe" (Win32). Загружено "C:\Windows\SysWOW64\kernel32.dll". 
+"CreateInst_v2.exe" (Win32). Загружено "C:\Windows\SysWOW64\KernelBase.dll". 
+"CreateInst_v2.exe" (Win32). Загружено "C:\Windows\SysWOW64\msvcp140d.dll". 
+"CreateInst_v2.exe" (Win32). Загружено "C:\Windows\SysWOW64\vcruntime140d.dll". 
+"CreateInst_v2.exe" (Win32). Загружено "C:\Windows\SysWOW64\ucrtbased.dll". 
+Поток 0x3644 завершился с кодом 0 (0x0).
+"CreateInst_v2.exe" (Win32). Загружено "C:\Windows\SysWOW64\kernel.appcore.dll". 
+"CreateInst_v2.exe" (Win32). Загружено "C:\Windows\SysWOW64\msvcrt.dll". 
+"CreateInst_v2.exe" (Win32). Загружено "C:\Windows\SysWOW64\rpcrt4.dll". 
+Поток 0x718 завершился с кодом 0 (0x0).
+Поток 0x37dc завершился с кодом 0 (0x0).
+Программа "[22232] CreateInst_v2.exe" завершилась с кодом 0 (0x0).

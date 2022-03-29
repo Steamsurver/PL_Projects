@@ -29,7 +29,7 @@ HRESULT_ CreateServer(CLSID_ id_server, IID_ IID, void** pointer) {
 		Server_2* s = new Server_2();
 		if (IID == ID_Interface_2_) {
 			*pointer = (IUnknown_*)(Interface_2*)s;
-			cout << "Creating interface 1" << endl;
+			cout << "Creating interface 2" << endl;
 			return RESULT_OK_;
 		}
 		else {
@@ -70,14 +70,30 @@ Server::Server() {
 	test_var = 100;
 }
 
+void Server::Addref() {
+	reference++;
+}
+
+void Server::Release() {
+	reference--;
+	if (reference == 0) {
+		cout << "reference server 1 = 0\n";
+		delete this;
+	}
+}
+
+ULONG_ Server::GetRef() {
+	return reference;
+}
+
 void Server::Funx_Interface_1() {
 	test_var += 1;
-	cout <<test_var <<" Test out function of Interface_1 and server 1\n";
+	cout <<test_var <<" Test out function of Interface_1 and server 1\n\n";
 }
 
 void Server::Funx_Interface_2(){
 	test_var += 10;
-	cout << test_var << " Test out function of Interface_2 and server 1\n";
+	cout << test_var << " Test out function of Interface_2 and server 1\n\n";
 }
 
 Server::~Server() {
@@ -89,17 +105,21 @@ HRESULT_ Server::QueryInterface(IID_ IID, void** pointer)
 	cout << "Server 1 QueryInterface" << endl;
 
 	if (IID == ID_IUnknown_){
+		this->Addref();
 		*pointer = (IUnknown_*)(Interface_1*)this;
 	}
 
 	else if (IID == ID_Interface_1_){
+		this->Addref();
 		*pointer = static_cast<Interface_1*>(this);
 	}
 
 	else if (IID == ID_Interface_2_){
+		this->Addref();
 		*pointer = (Interface_2*)this;
 	}
 	else if (IID == ID_ICLassFactory_) {
+		this->Addref();
 		*pointer = (ICLassFactory_*)this;
 	}
 
@@ -122,9 +142,25 @@ Server_2::Server_2() {
 	test_var = 200;
 }
 
+void Server_2::Addref() {
+	reference++;
+}
+
+void Server_2::Release() {
+	reference--;
+	if (reference == 0) {
+		cout << "reference server 2 = 0\n";
+		delete this;
+	}
+}
+
+ULONG_ Server_2::GetRef() {
+	return reference;
+}
+
 void Server_2::Funx_Interface_2() {
 	test_var += 1;
-	cout << test_var << " Test out function of Interface_2 and server 1\n";
+	cout << test_var << " Test out function of Interface_2 and server 2\n\n";
 }
 
 Server_2::~Server_2() {
@@ -136,12 +172,15 @@ HRESULT_ Server_2::QueryInterface(IID_ IID, void** pointer)
 	cout << "Server 2 QueryInterface" << endl;
 
 	if (IID == ID_IUnknown_){
+		this->Addref();
 		*pointer = (IUnknown_*)(Interface_1*)this;
 	}
 	else if (IID == ID_Interface_2_){
+		this->Addref();
 		*pointer = (Interface_2*)this;
 	}
 	else if (IID == ID_ICLassFactory_) {
+		this->Addref();
 		*pointer = (ICLassFactory_*)this;
 	}
 	else{

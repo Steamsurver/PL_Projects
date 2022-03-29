@@ -1,6 +1,2 @@
-﻿  ItMult.cpp
-D:\CalcCOP\new\Client\CreateInst_v2\ItMult.cpp(7,11): warning C4101: res: неиспользованная локальная переменная
-  client.cpp
-  Создание кода...
-D:\CalcCOP\new\Client\CreateInst_v2\ItMult.cpp(64): warning C4715: GetClassObject: значение возвращается не при всех путях выполнения
+﻿  client.cpp
   CreateInst_v2.vcxproj -> D:\CalcCOP\new\Client\Debug\CreateInst_v2.exe
