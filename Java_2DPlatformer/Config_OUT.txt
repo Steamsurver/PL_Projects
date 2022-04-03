@@ -1,0 +1,15 @@
+Resolution_Height:
+720
+
+Resolution_Width:
+1280
+
+Stage_LayoutX:
+370
+
+Stage_LayoutY:
+160
+
+FullScreenOn:
+0
+
