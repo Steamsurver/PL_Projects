@@ -1,0 +1,25 @@
+[Window][Debug##Default]
+Pos=60,60
+Size=400,400
+Collapsed=0
+
+[Window][Test window]
+Pos=1490,898
+Size=413,149
+Collapsed=0
+
+[Window][Dear ImGui Demo]
+Pos=1382,20
+Size=520,455
+Collapsed=0
+
+[Window][Inspector]
+Pos=21,28
+Size=304,454
+Collapsed=0
+
+[Window][ConstructWindow]
+Pos=7,835
+Size=1240,170
+Collapsed=0
+

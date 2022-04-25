@@ -1,0 +1,739 @@
+[
+  {
+    "name": "player",
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 0.0,
+            "height": 0.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Entity/Player_Idle.png",
+              "texID": 3,
+              "width": 17,
+              "height": 45
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.RigidBody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          }
+        }
+      }
+    ],
+    "zIndex": 3,
+    "transform": {
+      "position": {
+        "x": 200.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 128.0
+      }
+    }
+  },
+  {
+    "name": "player",
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 0.0,
+            "height": 0.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Entity/Player_Idle.png",
+              "texID": 3,
+              "width": 17,
+              "height": 45
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.RigidBody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          }
+        }
+      }
+    ],
+    "zIndex": 4,
+    "transform": {
+      "position": {
+        "x": 200.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 128.0
+      }
+    }
+  },
+  {
+    "name": "player",
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 0.0,
+            "height": 0.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Entity/Player_Idle.png",
+              "texID": 3,
+              "width": 17,
+              "height": 45
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.RigidBody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          }
+        }
+      }
+    ],
+    "zIndex": 2,
+    "transform": {
+      "position": {
+        "x": 200.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 128.0
+      }
+    }
+  },
+  {
+    "name": "player",
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 0.0,
+            "height": 0.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Entity/Player_Idle.png",
+              "texID": 3,
+              "width": 17,
+              "height": 45
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.RigidBody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          }
+        }
+      }
+    ],
+    "zIndex": 2,
+    "transform": {
+      "position": {
+        "x": 200.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 128.0
+      }
+    }
+  },
+  {
+    "name": "player",
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 0.0,
+            "height": 0.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Entity/Player_Idle.png",
+              "texID": 3,
+              "width": 17,
+              "height": 45
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.RigidBody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          }
+        }
+      }
+    ],
+    "zIndex": 2,
+    "transform": {
+      "position": {
+        "x": 200.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 128.0
+      }
+    }
+  },
+  {
+    "name": "player",
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 0.0,
+            "height": 0.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Entity/Player_Idle.png",
+              "texID": 3,
+              "width": 17,
+              "height": 45
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.RigidBody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          }
+        }
+      }
+    ],
+    "zIndex": 2,
+    "transform": {
+      "position": {
+        "x": 200.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 64.0,
+        "y": 128.0
+      }
+    }
+  },
+  {
+    "name": "player",
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 0.14218275,
+            "y": 0.2588235,
+            "z": 0.124844275,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 0.0,
+            "height": 0.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Entity/Player_Idle.png",
+              "texID": 3,
+              "width": 17,
+              "height": 45
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.RigidBody",
+        "properties": {
+          "colliderType": 55,
+          "friction": 57.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          }
+        }
+      }
+    ],
+    "zIndex": 2,
+    "transform": {
+      "position": {
+        "x": 200.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 128.0,
+        "y": 256.0
+      }
+    }
+  },
+  {
+    "name": "player",
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 0.0,
+            "height": 0.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Entity/Player_Idle.png",
+              "texID": 3,
+              "width": 17,
+              "height": 45
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.RigidBody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          }
+        }
+      }
+    ],
+    "zIndex": 2,
+    "transform": {
+      "position": {
+        "x": 200.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 128.0,
+        "y": 256.0
+      }
+    }
+  },
+  {
+    "name": "player",
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 0.0,
+            "height": 0.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Entity/Player_Idle.png",
+              "texID": 3,
+              "width": 17,
+              "height": 45
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.RigidBody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          }
+        }
+      }
+    ],
+    "zIndex": 2,
+    "transform": {
+      "position": {
+        "x": 200.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 128.0,
+        "y": 256.0
+      }
+    }
+  },
+  {
+    "name": "player",
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 0.0,
+            "height": 0.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Entity/Player_Idle.png",
+              "texID": 3,
+              "width": 17,
+              "height": 45
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.RigidBody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          }
+        }
+      }
+    ],
+    "zIndex": 2,
+    "transform": {
+      "position": {
+        "x": 200.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 128.0,
+        "y": 256.0
+      }
+    }
+  },
+  {
+    "name": "player",
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 0.0,
+            "height": 0.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Entity/Player_Idle.png",
+              "texID": 3,
+              "width": 17,
+              "height": 45
+            },
+            "texCoords": [
+              {
+                "x": 1.0,
+                "y": 1.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.RigidBody",
+        "properties": {
+          "colliderType": 0,
+          "friction": 0.8,
+          "velocity": {
+            "x": 0.0,
+            "y": 0.5,
+            "z": 0.0
+          }
+        }
+      }
+    ],
+    "zIndex": 2,
+    "transform": {
+      "position": {
+        "x": 200.0,
+        "y": 0.0
+      },
+      "scale": {
+        "x": 128.0,
+        "y": 256.0
+      }
+    }
+  }
+]
