@@ -1,2 +1,8 @@
 0
 ..\DLL_LIB\DLL_IUnknown\x64\Debug\DLL_IUnknown.dll
+0
+C:\Users\User\Desktop\Calculator\DLL_LIB\DLL_IUnknown\x64\Debug\DLL_IUnknown.dll
+0
+C:\Users\User\Desktop\Calculator\DLL_LIB\DLL_IUnknown\x64\Debug\DLL_IUnknown.dll
+0
+C:\Users\User\Desktop\Calculator\DLL_LIB\DLL_IUnknown\x64\Debug\DLL_IUnknown.dll
