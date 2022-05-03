@@ -1,0 +1,123 @@
+﻿  ButtonSFML.cpp
+C:\Users\User\Desktop\Calculator\CreateInst_v2\ButtonSFML.cpp(20,11): warning C4244: =: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\ButtonSFML.cpp(21,11): warning C4244: =: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\ButtonSFML.cpp(31,76): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\ButtonSFML.cpp(31,48): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\ButtonSFML.cpp(37,28): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\ButtonSFML.cpp(37,21): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\ButtonSFML.cpp(51,11): warning C4244: =: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\ButtonSFML.cpp(52,11): warning C4244: =: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\ButtonSFML.cpp(77,66): warning C4244: аргумент: преобразование "T" в "sf::Uint8", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\ButtonSFML.cpp(77,51): warning C4244: аргумент: преобразование "T" в "sf::Uint8", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\ButtonSFML.cpp(77,36): warning C4244: аргумент: преобразование "T" в "sf::Uint8", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+  LabelSFML.cpp
+C:\Users\User\Desktop\Calculator\CreateInst_v2\LabelSFML.cpp(25,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\LabelSFML.cpp(25,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  SCalculator.cpp
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(111,35): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(122,148): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(122,82): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(136,148): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(136,82): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(145,127): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(145,71): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(155,127): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(155,71): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(175,148): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(175,82): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(188,148): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(188,82): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(197,127): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(197,71): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(206,127): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(206,71): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(358,52): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(358,45): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(358,44): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(361,53): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(361,46): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(361,45): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(364,62): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(364,55): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(364,54): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(367,56): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(367,49): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(367,48): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(408,49): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(408,42): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(408,41): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(411,50): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(411,43): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(411,42): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(414,59): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(414,52): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(414,51): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(417,53): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(417,46): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\SCalculator.cpp(417,45): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  TextBox.cpp
+C:\Users\User\Desktop\Calculator\CreateInst_v2\TextBox.cpp(17,11): warning C4244: =: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\TextBox.cpp(18,11): warning C4244: =: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\TextBox.cpp(27,61): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\TextBox.cpp(27,32): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\User\Desktop\Calculator\CreateInst_v2\TextBox.cpp(33,28): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\TextBox.cpp(33,21): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\User\Desktop\Calculator\CreateInst_v2\TextBox.cpp(34,41): warning C4305: аргумент: усечение из "int" в "sf::Uint8"
+C:\Users\User\Desktop\Calculator\CreateInst_v2\TextBox.cpp(34,37): warning C4309: аргумент: усечение константного значения
+C:\Users\User\Desktop\Calculator\CreateInst_v2\TextBox.cpp(34,31): warning C4309: аргумент: усечение константного значения
+C:\Users\User\Desktop\Calculator\CreateInst_v2\TextBox.cpp(34,25): warning C4309: аргумент: усечение константного значения
+  client.cpp
+  Создание кода...
+  CreateInst_v2.vcxproj -> C:\Users\User\Desktop\Calculator\CreateInst_v2\x64\Debug\CreateInst_v2.exe
