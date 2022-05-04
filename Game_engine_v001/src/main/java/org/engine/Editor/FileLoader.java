@@ -247,7 +247,9 @@ public class FileLoader {
     }
 
     private static void LoadImageFromURL(){//метод загрузки изображения
-        if(getThis().URL_path.get() != "") {
+        try{
+
+            if(getThis().URL_path.get() != "") {
                 URL url_file = new URL(getThis().URL_path.get());
                 ReadableByteChannel rbc = Channels.newChannel(url_file.openStream());
                 FileOutputStream fos = new FileOutputStream("src/main/java/org/engine/Resources/Textures/Abstraction/" + getThis().URL_filename.get());//путь выгрузки
@@ -255,6 +257,10 @@ public class FileLoader {
                 fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
                 fos.close();
             }
+
+        }catch(Exception e){
+            System.out.println("Bad path or unexpected error: " + e.getMessage());
+        }
     }
 
     public static boolean loadURLImage(){
