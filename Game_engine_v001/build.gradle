@@ -29,6 +29,8 @@ repositories {
 
 dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
+    //implementation "io.github.spair:imgui-java-app:1.77-0.17.1"
+    //implementation "io.github.spair:imgui-java-app:1.80-1.5.0"
     implementation "io.github.spair:imgui-java-app:1.86.4"
     implementation "org.lwjgl:lwjgl"
     implementation "org.lwjgl:lwjgl-assimp"
