@@ -1,0 +1,28 @@
+MAIN:
+    Window:
+        Scene
+            Scene.load():
+            Scene.Init():
+                LoadResources()
+
+            Scene.Start():
+                Scene.GameObjectsContainer.start()
+                Renderer.add(GameObjects)
+                    Renderer.RenderButch.addSprite(GameObjects.SpriteRender)
+
+            Scene.update():
+                Scene.GameObject.Update():
+                Renderer.Render():
+                    Renderer.RenderButch.render():
+                        
+
+
+        DebugDraw:
+            DebugDraw.Draw():
+
+
+        ImGui:
+            ImGui.Update()
+                currentScene.imGui()
+
+        SaveExit():
