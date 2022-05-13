@@ -48,6 +48,8 @@ public class FileLoader {
     private ImInt numSpr;//кол-во спрайтов для листа
     private ImInt space;//спэйсинг для листа
 
+    private static LoadThreadURL classThreadURL = new LoadThreadURL();
+
 
     private static FileLoader instance = null;
 
@@ -62,6 +64,7 @@ public class FileLoader {
         numSpr = new ImInt(0);
         space = new ImInt(0);
 
+        FileLoader.classThreadURL.start();
     }
 
     private static FileLoader getThis(){
@@ -246,22 +249,7 @@ public class FileLoader {
         return true;
     }
 
-    private static void LoadImageFromURL(){//метод загрузки изображения
-        try{
 
-            if(getThis().URL_path.get() != "") {
-                URL url_file = new URL(getThis().URL_path.get());
-                ReadableByteChannel rbc = Channels.newChannel(url_file.openStream());
-                FileOutputStream fos = new FileOutputStream("src/main/java/org/engine/Resources/Textures/Abstraction/" + getThis().URL_filename.get());//путь выгрузки
-
-                fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-                fos.close();
-            }
-
-        }catch(Exception e){
-            System.out.println("Bad path or unexpected error: " + e.getMessage());
-        }
-    }
 
     public static boolean loadURLImage(){
         //https://64.media.tumblr.com/56898cac9ff033ed6c7c527430478e19/tumblr_muq5j4RD9n1r9hnaao1_400.png
@@ -274,6 +262,7 @@ public class FileLoader {
 
         if(ImGui.button("Load")){
             try{
+                FileLoader.classThreadURL.setDownload(true);// ЗАГРУЗКА В ОТДЕЛЬНОМ ПОТОКЕ <-----------------------------------------
 
                 EventSystem.notify(null, new Event(EventType.SaveLevel));
                 EventSystem.notify(null, new Event(EventType.LoadLevel));
@@ -296,5 +285,41 @@ public class FileLoader {
 
         ImGui.end();
         return true;
+    }
+
+    private static void LoadImageFromURL(){//метод загрузки изображения
+        try{
+
+            if(getThis().URL_path.get() != "") {
+                URL url_file = new URL(getThis().URL_path.get());
+                ReadableByteChannel rbc = Channels.newChannel(url_file.openStream());
+                FileOutputStream fos = new FileOutputStream("src/main/java/org/engine/Resources/Textures/Abstraction/" + getThis().URL_filename.get());//путь выгрузки
+
+                fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+                fos.close();
+            }
+
+        }catch(Exception e){
+            System.out.println("Bad path or unexpected error: " + e.getMessage());
+        }
+    }
+
+    static class LoadThreadURL extends Thread{
+        private boolean isDownload = false;
+
+        public void run() {
+            while(true) {
+                Thread loadCurrent = Thread.currentThread();
+                while (isDownload) {
+                    System.out.println("Downloading");
+                    FileLoader.LoadImageFromURL();
+                    isDownload = false;
+                }
+            }
+        }
+
+        public void setDownload(boolean download){
+            this.isDownload = download;
+        }
     }
 }
