@@ -311,7 +311,6 @@ public class FileLoader {
             while(true) {
                 Thread loadCurrent = Thread.currentThread();
                 while (isDownload) {
-                    System.out.println("Downloading");
                     FileLoader.LoadImageFromURL();
                     isDownload = false;
                 }
