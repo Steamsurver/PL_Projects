@@ -4,13 +4,16 @@ package org.engine.scenes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import imgui.ImGui;
+import org.engine.GameController.MouseListener;
 import org.engine.GameElements.Camera;
+import org.engine.Physics2D.Physics2D;
 import org.engine.Rendering.Objects.Components.Component;
+import org.engine.Rendering.Objects.Components.Transform;
 import org.engine.Rendering.Objects.GameObject;
 import org.engine.Rendering.Renderer;
 import org.engine.Resources.Utils.Deserializer;
 import org.engine.Resources.Utils.GameObjectDeserializer;
+import org.joml.Vector2f;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,31 +21,44 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public abstract class Scene {
-    protected Renderer renderer = new Renderer();
-    protected Camera camera;
-    private boolean isRunning = false;
-    protected List<GameObject> gameObjects = new ArrayList<>();
-    protected GameObject activeGameObject = null;
-    protected boolean levelLoaded = false;
+public class Scene {
 
-    public Scene(){
+    private final SceneInitializer sceneInitializer;//инициализатор для сцены
+    private  Renderer renderer;
+    private Camera camera;
+    private boolean isRunning;
+    private List<GameObject> gameObjects;
+    private Physics2D physics2D;
 
-    }
-
-    public int getGOSize(){
-        return gameObjects.size();
+    public Scene(SceneInitializer sceneInitializer){
+        this.sceneInitializer = sceneInitializer;
+        this.physics2D = new Physics2D();
+        this.renderer = new Renderer();
+        this.gameObjects = new ArrayList<>();
+        this.isRunning = false;
     }
 
     public void init(){
+        this.camera = new Camera(new Vector2f(0, 0));
 
+        this.sceneInitializer.loadResources(this);
+        this.sceneInitializer.init(this);
+    }
+
+    public void destroy(){
+        for(GameObject go : gameObjects){
+            go.destroy();
+        }
     }
 
     public void start(){
-        for(GameObject go : gameObjects){
+        for(int i = 0; i < gameObjects.size(); i++){
+            GameObject go = gameObjects.get(i);
             go.start();
             this.renderer.add(go);
+            this.physics2D.add(go);
         }
 
         isRunning = true;
@@ -56,31 +72,58 @@ public abstract class Scene {
             gameObjects.add(go);
             go.start();
             this.renderer.add(go);
+            this.physics2D.add(go);
         }
 
     }
 
-    public abstract void update(float dt);
+    public void update(float dt) {//апдейтер игрового поля
+
+        this.physics2D.update(dt);
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject go = gameObjects.get(i);
+            go.update(dt);
+
+
+            if (go.isDead()){//удаление объектов со включенным флагом
+                gameObjects.remove(i);
+                this.renderer.destroyGameObject(go);
+                this.physics2D.destroyGameObject(go);
+                 i--;
+            }
+        }
+    }
+
+    public void editorUpdate(float dt){//апдейтер движка
+        this.camera.adjustProjection();//обновляем проекцию матрицы
+
+        for (int i = 0; i < gameObjects.size(); i++) {
+            GameObject go = gameObjects.get(i);
+            go.editorUpdate(dt);
+
+            if (go.isDead()){//удаление объектов со включенным флагом
+                gameObjects.remove(i);
+                this.renderer.destroyGameObject(go);
+                this.physics2D.destroyGameObject(go);
+                i--;
+            }
+        }
+    }
+
+
+    public void render(){
+        this.renderer.render();
+    }
 
     public Camera getCamera() {
         return camera;
     }
 
-    public void sceneImGui(){
-        if(activeGameObject != null){
-            ImGui.begin("Inspector");
-            activeGameObject.imGui();
-            ImGui.end();
-        }
-
-        imGui();
+    public void imGui(){//отрисовка графического интерфейса движка, привязанного к текущей сцене
+        this.sceneInitializer.imGui();
     }
 
-    public void imGui(){
-
-    }
-
-    public void saveExit(){
+    public void save(){
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting().registerTypeAdapter(Component.class, new Deserializer())
                 .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
@@ -89,13 +132,27 @@ public abstract class Scene {
 
         try{
             FileWriter writer = new FileWriter("src/main/java/org/engine/Config/level.txt");
-            writer.write(gson.toJson(this.gameObjects));
+
+            List<GameObject> objsToSerialize = new ArrayList<>();//массив с объектами, которые нужно сериализовыввать
+            for(GameObject obj : this.gameObjects){
+                if(obj.doSerialization()){
+                    objsToSerialize.add(obj);
+                }
+            }
+
+            writer.write(gson.toJson(objsToSerialize));
             writer.close();
         }catch(IOException e){
             e.printStackTrace();
         }
     }
 
+    public GameObject createGameObject(String name){//через этот метод можно создавать класс игрового объекта
+        GameObject go = new GameObject(name);
+        go.addComponent(new Transform());
+        go.transform = go.getComponent(Transform.class);
+        return go;
+    }
 
     public void load(){
         //подгрузка параметров/Десериализация
@@ -135,9 +192,18 @@ public abstract class Scene {
             maxCompId++;
             GameObject.init(maxGoId);
             Component.init(maxCompId);
-            this.levelLoaded = true;
         }
     }
 
+    public GameObject getGameObject(int gameObjectId) {
+        Optional<GameObject> result = this.gameObjects.stream()
+                .filter(gameObject -> gameObject.getUid() == gameObjectId)
+                .findFirst();
+        return result.orElse(null);
+    }
+
+    public List<GameObject> getGameObjects() {
+        return gameObjects;
+    }
 }
 

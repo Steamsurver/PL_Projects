@@ -3,8 +3,10 @@ package org.engine.Rendering;
 import org.engine.GameElements.Window;
 import org.engine.Rendering.Objects.Components.SpriteRender;
 import org.engine.Rendering.Objects.Components.Textures.Texture;
+import org.engine.Rendering.Objects.GameObject;
 import org.engine.Rendering.Shaders.Shader;
 import org.engine.Resources.Utils.AssetsPool;
+import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
@@ -25,12 +27,13 @@ public class RenderBatch implements Comparable<RenderBatch>{
     private final int COLOR_SIZE = 4;
     private final int TEX_COORDS_SIZE = 2;
     private final int TEX_ID_SIZE = 1;
-
+    private final int ENTITY_ID_SIZE = 1;
     private final int POS_OFFSET = 0;
     private final int COLOR_OFFSET = POS_OFFSET + POS_SIZE * Float.BYTES;
     private final int TEX_COORDS_OFFSET = COLOR_OFFSET + COLOR_SIZE * Float.BYTES;
     private final int TEX_ID_OFFSET = TEX_COORDS_OFFSET + TEX_COORDS_SIZE * Float.BYTES;
-    private final int VERTEX_SIZE = 9;
+    private final int ENTITY_ID_OFFSET = TEX_ID_OFFSET + TEX_ID_SIZE * Float.BYTES;
+    private final int VERTEX_SIZE = 10;
     private final int VERTEX_SIZE_BYTES = VERTEX_SIZE * Float.BYTES;
 
 
@@ -40,15 +43,17 @@ public class RenderBatch implements Comparable<RenderBatch>{
     private boolean hasRoom;
     private float[] vertices;
     private int zIndex; //ндексация по координате Z
+    private Renderer renderer;
 
     private int vaoID, vboID;
     private int maxBatchSize;
-    private Shader shader;
+    //private Shader shader;
     private int[] texSlots = {0, 1, 2 ,3, 4, 5, 6, 7};
 
-    public RenderBatch(int maxButchSize, int zIndex){
+    public RenderBatch(int maxButchSize, int zIndex, Renderer renderer){
+        this.renderer = renderer;
         this.zIndex = zIndex;
-        shader = AssetsPool.getShader("src/main/java/org/engine/Rendering/Shaders/default.glsl");
+        //shader = AssetsPool.getShader("src/main/java/org/engine/Rendering/Shaders/default.glsl");
         this.sprites = new SpriteRender[maxButchSize];
         this.maxBatchSize = maxButchSize;
 
@@ -89,6 +94,9 @@ public class RenderBatch implements Comparable<RenderBatch>{
         glEnableVertexAttribArray(2);
         glVertexAttribPointer(3, TEX_ID_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTES, TEX_ID_OFFSET);
         glEnableVertexAttribArray(3);
+
+        glVertexAttribPointer(4, ENTITY_ID_SIZE, GL_FLOAT, false, VERTEX_SIZE_BYTES, ENTITY_ID_OFFSET);
+        glEnableVertexAttribArray(4);
     }
 
 
@@ -112,7 +120,7 @@ public class RenderBatch implements Comparable<RenderBatch>{
     }
 
 
-    public void render(float dt){
+    public void render(){
         boolean rebufferData = false;
         for(int i = 0; i < numSprites; i++){
             SpriteRender spr = sprites[i];
@@ -121,7 +129,16 @@ public class RenderBatch implements Comparable<RenderBatch>{
                 spr.setClean();
                 rebufferData = true;
             }
+
+            //поддержка изменения z-индексирования в реальном времени
+            if(spr.gameObject.transform.zIndex != this.zIndex){
+                destroyIfExists(spr.gameObject);
+                //перезыписываем текущий объект
+                renderer.add(spr.gameObject);
+                i--;
+            }
         }
+
 
         //здесь будем выгружать данные каждый кадр
         if(rebufferData) {
@@ -130,10 +147,10 @@ public class RenderBatch implements Comparable<RenderBatch>{
         }
 
 
-        shader.use();
+        Shader shader = Renderer.getBoundShader();
         shader.uploadMat4f("uProjection", Window.getCurrentScene().getCamera().getProjectionMatrix());
         shader.uploadMat4f("uView", Window.getCurrentScene().getCamera().getViewMatrix());
-        shader.uploadFloat("uDT", dt);
+
 
 
         //textures=============
@@ -213,21 +230,41 @@ public class RenderBatch implements Comparable<RenderBatch>{
         }
 
 
+        boolean isRotated = sprite.gameObject.transform.rotation != 0.0f;//флаг надо ли переворачивать
+        Matrix4f transformMatrix = new Matrix4f().identity();
+        if(isRotated){
+            transformMatrix.translate(sprite.gameObject.transform.position.x,
+                    sprite.gameObject.transform.position.y, 0f);
+
+            //вращение вокруг оси z
+            transformMatrix.rotate((float)Math.toRadians(sprite.gameObject.transform.rotation), 0, 0, 1);
+
+            transformMatrix.scale(sprite.gameObject.transform.scale.x, sprite.gameObject.transform.scale.y, 1);
+
+        }
+
         //add vertices with the appropriate properties
-        float xAdd = 1.0f;
-        float yAdd = 1.0f;
+        float xAdd = 0.5f;
+        float yAdd = 0.5f;
 
         for(int i=0; i < 4; i++){
             if(i == 1){
-                yAdd = 0.0f;
+                yAdd = -0.5f;
             }else if(i == 2){
-                xAdd = 0.0f;
+                xAdd = -0.5f;
             }else if(i == 3){
-                yAdd = 1.0f;
+                yAdd = 0.5f;
             }
             //load position
-            vertices[offset] = sprite.gameObject.transform.position.x + (xAdd * sprite.gameObject.transform.scale.x);
-            vertices[offset+1] =sprite.gameObject.transform.position.y + (yAdd * sprite.gameObject.transform.scale.y);
+            Vector4f currentPos = new Vector4f(sprite.gameObject.transform.position.x + (xAdd * sprite.gameObject.transform.scale.x),
+                    sprite.gameObject.transform.position.y + (yAdd * sprite.gameObject.transform.scale.y), 0, 1);
+
+            if(isRotated){
+                currentPos = new Vector4f(xAdd, yAdd, 0, 1).mul(transformMatrix);
+            }
+
+            vertices[offset] = currentPos.x;
+            vertices[offset+1] = currentPos.y;
 
             //load color
             vertices[offset+2] = color.x;
@@ -241,6 +278,9 @@ public class RenderBatch implements Comparable<RenderBatch>{
 
             //load texture id
             vertices[offset+8] = texID;
+
+            //load entity id
+            vertices[offset+9] = sprite.gameObject.getUid() + 1;
 
 
             offset += VERTEX_SIZE;
@@ -268,6 +308,21 @@ public class RenderBatch implements Comparable<RenderBatch>{
     @Override
     public int compareTo(RenderBatch o) {
         return Integer.compare(this.zIndex, o.zIndex());
+    }
+
+    public boolean destroyIfExists(GameObject go) {//очистка спрайтов объекта
+        SpriteRender sprite = go.getComponent(SpriteRender.class);
+        for(int i = 0; i < numSprites; i++){
+            if(sprites[i] == sprite){
+               for(int j = i; j < numSprites - 1;j++){//перезаписывание спрайтов
+                   sprites[j] = sprites[j + 1];
+                   sprites[j].setDirty();
+               }
+               numSprites--;
+               return true;
+            }
+        }
+        return false;
     }
 }
 

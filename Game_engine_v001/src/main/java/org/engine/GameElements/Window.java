@@ -1,13 +1,22 @@
 package org.engine.GameElements;
 
 
-import org.engine.Engine_GUI.ImGuiLayer;
+import org.engine.Editor.ImGuiLayer;
+import org.engine.EventSystem.Events.Event;
+import org.engine.EventSystem.Observers.EventSystem;
+import org.engine.EventSystem.Observers.Observer;
 import org.engine.GameController.KeyListener;
 import org.engine.GameController.MouseListener;
 import org.engine.Rendering.DebugDraw;
 import org.engine.Rendering.FrameBuffer;
-import org.engine.scenes.LevelEditorScene;
+import org.engine.Rendering.Objects.Components.Textures.PickingTexture;
+import org.engine.Rendering.Objects.GameObject;
+import org.engine.Rendering.Renderer;
+import org.engine.Rendering.Shaders.Shader;
+import org.engine.Resources.Utils.AssetsPool;
+import org.engine.scenes.LevelSceneInitializer;
 import org.engine.scenes.Scene;
+import org.engine.scenes.SceneInitializer;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
@@ -16,8 +25,7 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
-public class Window {
-    private float r, g, b ,a;
+public class Window implements Observer {
     private int width, height;
     private FrameBuffer framebuffer;
     private String title;
@@ -25,28 +33,24 @@ public class Window {
     private static long glfwWindow;
     private static Scene currentScene;//Текущая сцена
     private ImGuiLayer imGuiLayer;//Графический слой
+    private boolean runtimePlaying = false;//флаг для игры в реальном времени
+    private PickingTexture pickingTexture;
 
 
     public Window() {
         this.width = 1920;
         this.height = 1080;
-        this.title = "GAME";
-        this.r = 0.5f;
-        this.g = 0.5f;
-        this.b = 0.5f;
-        this.a = 1;
+        this.title = "Engine v0.0.2";
+        EventSystem.addObserver(this);//добавляем наш объект в список слушателей, регистрируем
     }
 
-    public static void changeScene(int newScene){//метод смены сцены в реальном времени
-        switch (newScene){
-            case 0:
-                currentScene = new LevelEditorScene();
-                break;
-
-            default:
-                assert false: "Unknown scene in '" + newScene + "'";
-                break;
+    public static void changeScene(SceneInitializer sceneInitializer){//метод смены сцены в реальном времени
+        if(currentScene != null){
+            currentScene.destroy();
         }
+
+        getImGuiLayer().getPropertiesWindow().setActiveGameObject(null);
+        currentScene = new Scene(sceneInitializer);//подгрузка инициализатора в сцену
         currentScene.load();//подгрузка всех значений объектов, десирреализация игровых объектов на сцену.
         currentScene.init();//подготовка объектов внутри сцены
         currentScene.start();//запуск игровой сцены
@@ -78,7 +82,7 @@ public class Window {
     }//гетер текушей ширины окна
 
     public static void setHeight(int newHeight) {
-       Window.window.height = newHeight;
+        Window.window.height = newHeight;
     }//
 
     public static void setWidth(int newWidth) {
@@ -155,20 +159,24 @@ public class Window {
         //делаем альфа-канал прозрачным
         glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
+        this.framebuffer = new FrameBuffer(1920, 1080);
+        this.pickingTexture = new PickingTexture(1920, 1080);
+        glViewport(0, 0, 1920, 1080);
+
         //инициализируем графический слой
-        this.imGuiLayer = new ImGuiLayer(glfwWindow);
+        this.imGuiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
         this.imGuiLayer.initImGui();
 
-        this.framebuffer = new FrameBuffer(1920, 1080);
-        Window.changeScene(0);
+        Window.changeScene(new LevelSceneInitializer());
     }
 
 
     public void loop(){
-        float dt = -1.0f; //разница во времени между концом и началом кадра
         float beginTime = (float)glfwGetTime() ;//переменная начала кадра
         float endTime;//переменная конца кадра
-
+        float dt = -1.0f; //разница во времени между концом и началом кадра
+        Shader defaultShader = AssetsPool.getShader("src/main/java/org/engine/Rendering/Shaders/default.glsl");
+        Shader pickingShader = AssetsPool.getShader("src/main/java/org/engine/Rendering/Shaders/pickingShader.glsl");
 
 
 
@@ -176,35 +184,79 @@ public class Window {
             //извлекаем ивенты
             glfwPollEvents();
 
+            //рендеринг выбранной текстуры
+            glDisable(GL_BLEND);
+            pickingTexture.enableWriting();
+
+            glViewport(0, 0, 1920, 1080);
+            glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            Renderer.bindShader(pickingShader);
+            currentScene.render();
+
+            pickingTexture.disableWriting();
+            glEnable(GL_BLEND);
+
+
             //рисуем сетку
             DebugDraw.beginFrame();
-
             this.framebuffer.bind();
 
             //заполняем сцену цветом
-            glClearColor(r, g, b, a);
+            glClearColor(0.3f, 0.3f, 0.3f, 0);
             glClear(GL_COLOR_BUFFER_BIT);
 
 
             if (dt >= 0) {
                 DebugDraw.draw();
+                Renderer.bindShader(defaultShader);
                 //Главный цикл сцены
-                currentScene.update(dt);
+
+                if(runtimePlaying) {
+                    currentScene.update(dt);
+                }else {
+                    currentScene.editorUpdate(dt);
+                }
+
+                currentScene.render();
             }
 
             this.framebuffer.unbind();
-
-
             this.imGuiLayer.update(dt ,currentScene);
 
             //обмениваем буфферы в окно
             glfwSwapBuffers(glfwWindow);
 
+            //MouseListener.endFrame();//зануляем все значения зуммирования
+
             endTime = (float)glfwGetTime();
             dt = endTime - beginTime;
             beginTime = endTime;
         }
-        currentScene.saveExit();
     }
 
+    public static ImGuiLayer getImGuiLayer() {
+        return window.imGuiLayer;
+    }
+
+    @Override
+    public void onNotify(GameObject object, Event event) {//прозвон различных событий
+        switch(event.type){
+            case GameEngineStartPlay -> {
+                this.runtimePlaying = true;
+                currentScene.save();
+                Window.changeScene(new LevelSceneInitializer());
+            }
+            case GameEngineStopPlay -> {
+                this.runtimePlaying = false;
+                Window.changeScene(new LevelSceneInitializer());
+            }
+            case LoadLevel -> {
+                Window.changeScene(new LevelSceneInitializer());
+            }
+            case SaveLevel -> {
+                currentScene.save();
+            }
+        }
+    }
 }

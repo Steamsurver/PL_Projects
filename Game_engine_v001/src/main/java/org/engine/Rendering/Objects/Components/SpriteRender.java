@@ -2,7 +2,7 @@ package org.engine.Rendering.Objects.Components;
 
 import imgui.ImGui;
 import org.engine.Rendering.Objects.Components.Textures.Texture;
-import org.engine.Rendering.Transform;
+import org.engine.Resources.Utils.AssetsPool;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
@@ -28,7 +28,9 @@ public class SpriteRender extends Component {
 
     @Override
     public void start(){
-        System.out.println("SpriteStart");
+        if (this.sprite.getTexture() != null) {
+            this.sprite.setTexture(AssetsPool.getTexture(this.sprite.getTexture().getFilepath()));
+        }
         this.lastTransform = gameObject.transform.copy();
     }
 
@@ -40,6 +42,13 @@ public class SpriteRender extends Component {
         }
     }
 
+    @Override
+    public void editorUpdate(float dt){
+        if(!this.lastTransform.equals(this.gameObject.transform)){
+            this.gameObject.transform.copy(this.lastTransform);
+            this.isDirty = true;
+        }
+    }
 
     public void setSprite(Sprite sprite){
         this.sprite = sprite;
@@ -75,4 +84,7 @@ public class SpriteRender extends Component {
         }
     }
 
+    public void setDirty() {
+        this.isDirty = true;
+    }
 }

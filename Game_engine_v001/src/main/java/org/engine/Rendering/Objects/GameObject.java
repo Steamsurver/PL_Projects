@@ -1,34 +1,44 @@
 package org.engine.Rendering.Objects;
 
 
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import imgui.ImGui;
 import org.engine.Rendering.Objects.Components.Component;
-import org.engine.Rendering.Transform;
+import org.engine.Rendering.Objects.Components.Sprite;
+import org.engine.Rendering.Objects.Components.SpriteRender;
+import org.engine.Rendering.Objects.Components.Transform;
+import org.engine.Resources.Utils.AssetsPool;
+import org.engine.Resources.Utils.Deserializer;
+import org.engine.Resources.Utils.GameObjectDeserializer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameObject {
-    private String name;
+    public String name;
     private static int ID_COUNTER = 0;
-    private int uid = -1;
-    private List<Component> components;
-    private int zIndex; //ндексация по координате Z
-
-    public Transform transform;
+    private int uid = -1;//id объекта
+    private List<Component> components;//контейнер с компонентами
+    public transient Transform transform;//параметры для перемещения и изменения размера
+    private boolean doSerialization = true;//можно дессириализовывать или нет
+    private boolean isDead = false;//флаг для уничтожения
 
     public static void init(int maxId){
         ID_COUNTER = maxId;
     }
-    public GameObject(String name, Transform transform, int zIndex) {
+    public GameObject(String name) {
         this.name = name;
         this.components = new ArrayList<>();
-        this.transform = transform;
-        this.zIndex = zIndex;
-
         this.uid = ID_COUNTER++;
     }
 
+    public void destroy() {
+        this.isDead = true;
+        for(int i = 0; i < components.size(); i++){
+            components.get(i).destroy();
+        }
+    }
 
     public <T extends Component> T getComponent(Class<T> componentClass) {
         for (Component c : components) {
@@ -59,7 +69,8 @@ public class GameObject {
 
     public void imGui(){
         for(Component c : components){
-            c.imGui();
+            if(ImGui.collapsingHeader(c.getClass().getSimpleName()))//варианты свойств зависящие от компонента
+                c.imGui();
         }
     }
 
@@ -77,15 +88,17 @@ public class GameObject {
         }
     }
 
-    public void start() {
+    public void editorUpdate(float dt) {
         for (int i=0; i < components.size(); i++) {
-            components.get(i).start();
+            components.get(i).editorUpdate(dt);
         }
     }
 
 
-    public int zIndex() {
-        return this.zIndex;
+    public void start() {
+        for (int i=0; i < components.size(); i++) {
+            components.get(i).start();
+        }
     }
 
     public int getUid(){
@@ -94,6 +107,44 @@ public class GameObject {
 
     public List<Component> getAllComponents() {
         return components;
+    }
+
+    public void setNoSerialize() {
+         this.doSerialization = false;
+    }
+
+    public boolean doSerialization() {
+        return this.doSerialization;
+    }
+
+    public boolean isDead() {
+        return this.isDead;
+    }
+
+    public GameObject copy() {
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Component.class, new Deserializer())
+                .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
+                .create();
+        String objAsJson = gson.toJson(this);
+        GameObject obj = gson.fromJson(objAsJson, GameObject.class);
+
+        obj.generateUid();
+        for(Component c : obj.getAllComponents()){
+            c.generateId();
+        }
+
+         //гарантированное переприсваивание текстуры
+        SpriteRender spriteRender = obj.getComponent(SpriteRender.class);
+        if(spriteRender != null && spriteRender.getTexture() != null){
+            spriteRender.setTexture(AssetsPool.getTexture(spriteRender.getTexture().getFilepath()));
+        }
+
+        return obj;
+    }
+
+    public void generateUid(){
+        this.uid = ID_COUNTER++;
     }
 }
 
