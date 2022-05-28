@@ -1,0 +1,66 @@
+import org.gradle.internal.os.OperatingSystem
+
+plugins {
+    id 'java'
+    id 'checkstyle'
+    id 'com.jfrog.bintray' version '1.8.4'
+    id 'maven-publish'
+}
+
+sourceCompatibility = 1.8
+
+switch (OperatingSystem.current()) {
+    case OperatingSystem.LINUX:
+        project.ext.lwjglNatives = 'natives-linux'
+        break
+    case OperatingSystem.WINDOWS:
+        project.ext.lwjglNatives = 'natives-windows'
+        break
+}
+
+dependencies {
+    implementation platform("org.lwjgl:lwjgl-bom:3.2.3")
+
+    implementation 'org.lwjgl:lwjgl'
+    implementation 'org.lwjgl:lwjgl-glfw'
+    implementation 'org.lwjgl:lwjgl-opengl'
+
+    testRuntimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
+    testRuntimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
+    testRuntimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
+
+    implementation project(':imgui-binding')
+}
+
+task startExample(type: JavaExec, dependsOn: build) {
+    main = 'ImGuiGlfwExample'
+    classpath = sourceSets.test.runtimeClasspath
+    jvmArgs = ['-Djava.library.path=../bin']
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    archiveClassifier.set('sources')
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId 'io.imgui.java'
+            artifactId 'lwjgl3'
+            artifact sourcesJar
+            version property('version')
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_API_KEY')
+    publications = ['MyPublication']
+    pkg {
+        repo = 'io.imgui.java'
+        name = 'lwjgl3'
+    }
+}
