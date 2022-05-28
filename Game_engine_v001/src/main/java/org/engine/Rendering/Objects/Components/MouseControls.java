@@ -32,6 +32,10 @@ public class MouseControls extends Component {
     public void place(){
         //размещение множества объектов с зажатой кнопкой
         GameObject newObj = this.holdingObject.copy();
+        if(newObj.getComponent(StateMachine.class) != null){//обновление анимации
+            newObj.getComponent(StateMachine.class).refreshTextures();
+        }
+
         newObj.getComponent(SpriteRender.class).setColor(new Vector4f(1, 1, 1, 1));
         newObj.removeComponent(NonPickable.class);
         Window.getCurrentScene().addGameObjectToScene(newObj);

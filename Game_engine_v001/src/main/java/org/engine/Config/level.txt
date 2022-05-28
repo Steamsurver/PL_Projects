@@ -1,22 +1,432 @@
 [
   {
     "name": "Sprite_Object_Gen",
-    "uid": 4,
+    "uid": 31,
     "components": [
       {
         "type": "org.engine.Rendering.Objects.Components.Transform",
         "properties": {
           "position": {
-            "x": 2.875,
-            "y": 1.375
+            "x": -0.125,
+            "y": 3.125
           },
           "scale": {
             "x": 0.25,
-            "y": 0.25
+            "y": 0.5
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "uid": 13
+          "uid": 26
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 0.8,
+            "y": 0.8,
+            "z": 0.8,
+            "w": 0.5
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 64.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+              "width": 256,
+              "height": 256
+            },
+            "texCoords": [
+              {
+                "x": 0.375,
+                "y": 1.0
+              },
+              {
+                "x": 0.375,
+                "y": 0.75
+              },
+              {
+                "x": 0.25,
+                "y": 0.75
+              },
+              {
+                "x": 0.25,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 27
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                }
+              ],
+              "doesLoop": true
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 28
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.NonPickable",
+        "properties": {
+          "uid": 29
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "uid": 37,
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.Transform",
+        "properties": {
+          "position": {
+            "x": -2.375,
+            "y": 1.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 41
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 0.8,
+            "y": 0.8,
+            "z": 0.8,
+            "w": 0.5
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 64.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+              "width": 256,
+              "height": 256
+            },
+            "texCoords": [
+              {
+                "x": 0.5,
+                "y": 1.0
+              },
+              {
+                "x": 0.5,
+                "y": 0.75
+              },
+              {
+                "x": 0.375,
+                "y": 0.75
+              },
+              {
+                "x": 0.375,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 42
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                }
+              ],
+              "doesLoop": true
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 43
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.NonPickable",
+        "properties": {
+          "uid": 44
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "uid": 39,
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.Transform",
+        "properties": {
+          "position": {
+            "x": -1.125,
+            "y": 0.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 41
         }
       },
       {
@@ -29,33 +439,567 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 16.0,
-            "height": 16.0,
+            "width": 32.0,
+            "height": 64.0,
             "texture": {
-              "filepath": "src/main/java/org/engine/Resources/Textures/Props/Fruits.png",
-              "width": 48,
-              "height": 32
+              "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+              "width": 256,
+              "height": 256
             },
             "texCoords": [
               {
-                "x": 0.6666667,
-                "y": 0.5
+                "x": 0.125,
+                "y": 1.0
               },
               {
-                "x": 0.6666667,
-                "y": 0.0
+                "x": 0.125,
+                "y": 0.75
               },
               {
-                "x": 0.33333334,
-                "y": 0.0
+                "x": 0.0,
+                "y": 0.75
               },
               {
-                "x": 0.33333334,
-                "y": 0.5
+                "x": 0.0,
+                "y": 1.0
               }
             ]
           },
-          "uid": 14
+          "uid": 42
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                }
+              ],
+              "doesLoop": true
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 43
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "uid": 41,
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.Transform",
+        "properties": {
+          "position": {
+            "x": -1.125,
+            "y": 0.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 41
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 64.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+              "width": 256,
+              "height": 256
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 1.0
+              },
+              {
+                "x": 0.125,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 42
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                }
+              ],
+              "doesLoop": true
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 43
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "uid": 43,
+    "components": [
+      {
+        "type": "org.engine.Rendering.Objects.Components.Transform",
+        "properties": {
+          "position": {
+            "x": -1.125,
+            "y": 0.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 41
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.SpriteRender",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 32.0,
+            "height": 64.0,
+            "texture": {
+              "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+              "width": 256,
+              "height": 256
+            },
+            "texCoords": [
+              {
+                "x": 0.125,
+                "y": 1.0
+              },
+              {
+                "x": 0.125,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 1.0
+              }
+            ]
+          },
+          "uid": 42
+        }
+      },
+      {
+        "type": "org.engine.Rendering.Objects.Components.StateMachine",
+        "properties": {
+          "stateTransfers": {},
+          "states": [
+            {
+              "title": "Run",
+              "animationFrames": [
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.0,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.125,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.25,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                },
+                {
+                  "sprite": {
+                    "width": 32.0,
+                    "height": 64.0,
+                    "texture": {
+                      "filepath": "src/main/java/org/engine/Resources/Textures/Animations/playerA.png",
+                      "width": 256,
+                      "height": 256
+                    },
+                    "texCoords": [
+                      {
+                        "x": 0.5,
+                        "y": 1.0
+                      },
+                      {
+                        "x": 0.5,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 0.75
+                      },
+                      {
+                        "x": 0.375,
+                        "y": 1.0
+                      }
+                    ]
+                  },
+                  "frameTime": 0.23
+                }
+              ],
+              "doesLoop": true
+            }
+          ],
+          "defaultStateTitle": "Run",
+          "uid": 43
         }
       }
     ],
