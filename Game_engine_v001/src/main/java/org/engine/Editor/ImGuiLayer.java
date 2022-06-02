@@ -9,7 +9,7 @@ import imgui.glfw.ImGuiImplGlfw;
 import imgui.type.ImBoolean;
 import org.engine.GameController.KeyListener;
 import org.engine.GameController.MouseListener;
-import org.engine.Rendering.Objects.Components.Textures.PickingTexture;
+import org.engine.Rendering.Assets.Texture.PickingTexture;
 import org.engine.scenes.Scene;
 import org.engine.GameElements.Window;
 
@@ -101,7 +101,7 @@ public class ImGuiLayer {
                 ImGui.setWindowFocus(null);
             }
 
-            if (!io.getWantCaptureMouse() || gameViewWindow.getWantCaptureMouse()) {
+            if (!io.getWantCaptureMouse() || gameViewWindow.getWantCaptureMouse()) {//блок мыши
                 MouseListener.mouseButtonCallback(w, button, action, mods);//установка значений нажатий для мыши
             }
 
@@ -110,7 +110,9 @@ public class ImGuiLayer {
         glfwSetScrollCallback(glfwWindow, (w, xOffset, yOffset) -> {//коллбэк для прокрутки мыши
             io.setMouseWheelH(io.getMouseWheelH() + (float) xOffset);
             io.setMouseWheel(io.getMouseWheel() + (float) yOffset);
-            MouseListener.mouseScrollCallback(w, xOffset, yOffset);//установка скролл значений для мыши
+            if (!io.getWantCaptureMouse() || gameViewWindow.getWantCaptureMouse()) {//блок мыши
+                MouseListener.mouseScrollCallback(w, xOffset, yOffset);//установка скролл значений для мыши
+            }
         });
 
         io.setSetClipboardTextFn(new ImStrConsumer() {

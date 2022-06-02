@@ -24,4 +24,6 @@ public class GameObjectDeserializer implements JsonDeserializer<GameObject> {
 
         return go;
     }
+
+
 }

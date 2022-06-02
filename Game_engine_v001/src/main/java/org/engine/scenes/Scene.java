@@ -4,15 +4,14 @@ package org.engine.scenes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.engine.Editor.FileLoader;
 import org.engine.GameController.MouseListener;
 import org.engine.GameElements.Camera;
 import org.engine.Physics2D.Physics2D;
-import org.engine.Rendering.Objects.Components.Component;
-import org.engine.Rendering.Objects.Components.Transform;
+import org.engine.Rendering.Objects.Components.*;
 import org.engine.Rendering.Objects.GameObject;
 import org.engine.Rendering.Renderer;
-import org.engine.Resources.Utils.Deserializer;
-import org.engine.Resources.Utils.GameObjectDeserializer;
+import org.engine.Resources.Utils.*;
 import org.joml.Vector2f;
 
 import java.io.FileWriter;
@@ -20,6 +19,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +30,10 @@ public class Scene {
     private Camera camera;
     private boolean isRunning;
     private List<GameObject> gameObjects;
+    private List<Sprite> sprites; //набор спрайтов на текущей сцене
+    private List<SpriteSheet> spriteSheets; //набор спрайтов на текущей сцене
     private Physics2D physics2D;
+    private GameObject renderObject;//через этот объект рендерим текстуры
 
     public Scene(SceneInitializer sceneInitializer){
         this.sceneInitializer = sceneInitializer;
@@ -38,6 +41,14 @@ public class Scene {
         this.renderer = new Renderer();
         this.gameObjects = new ArrayList<>();
         this.isRunning = false;
+        this.sprites = new ArrayList<>();
+        this.spriteSheets = new ArrayList<>();
+
+        renderObject = new GameObject("Render Object");
+        Transform tr = new Transform();
+        tr.zIndex = 0;
+        renderObject.addComponent(tr);
+        renderObject.addComponent(new SpriteRender());
     }
 
     public void init(){
@@ -96,6 +107,7 @@ public class Scene {
 
     public void editorUpdate(float dt){//апдейтер движка
         this.camera.adjustProjection();//обновляем проекцию матрицы
+
 
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject go = gameObjects.get(i);
@@ -160,6 +172,7 @@ public class Scene {
                 .setPrettyPrinting().registerTypeAdapter(Component.class, new Deserializer())
                 .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
                 .create();
+
         String inFile = "";
         try{
             inFile = new String(Files.readAllBytes(Paths.get("src/main/java/org/engine/Config/level.txt")));
@@ -168,11 +181,12 @@ public class Scene {
         }
 
 
-
+        //=================================================Подгрузка игровых объектов=========================================================
         if(!inFile.equals("")){
             int maxGoId = -1;
             int maxCompId = -1;
             GameObject[] objs = gson.fromJson(inFile, GameObject[].class);
+
             for(int i = 0; i < objs.length; i++){
                 addGameObjectToScene(objs[i]);
 
@@ -193,6 +207,8 @@ public class Scene {
             GameObject.init(maxGoId);
             Component.init(maxCompId);
         }
+
+        FileLoader.load();
     }
 
     public GameObject getGameObject(int gameObjectId) {

@@ -1,6 +1,7 @@
 package org.engine.GameElements;
 
 
+import org.engine.Editor.FileLoader;
 import org.engine.Editor.ImGuiLayer;
 import org.engine.EventSystem.Events.Event;
 import org.engine.EventSystem.Observers.EventSystem;
@@ -9,7 +10,7 @@ import org.engine.GameController.KeyListener;
 import org.engine.GameController.MouseListener;
 import org.engine.Rendering.DebugDraw;
 import org.engine.Rendering.FrameBuffer;
-import org.engine.Rendering.Objects.Components.Textures.PickingTexture;
+import org.engine.Rendering.Assets.Texture.PickingTexture;
 import org.engine.Rendering.Objects.GameObject;
 import org.engine.Rendering.Renderer;
 import org.engine.Rendering.Shaders.Shader;
@@ -18,10 +19,15 @@ import org.engine.scenes.LevelSceneInitializer;
 import org.engine.scenes.Scene;
 import org.engine.scenes.SceneInitializer;
 import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.openal.AL;
+import org.lwjgl.openal.ALC;
+import org.lwjgl.openal.ALCCapabilities;
+import org.lwjgl.openal.ALCapabilities;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.openal.ALC10.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
@@ -36,6 +42,8 @@ public class Window implements Observer {
     private boolean runtimePlaying = false;//флаг для игры в реальном времени
     private PickingTexture pickingTexture;
 
+    private long audioContext;//текущий контекст аудио-устройства
+    private long audioDevice;//аудио-устройство
 
     public Window() {
         this.width = 1920;
@@ -101,7 +109,11 @@ public class Window implements Observer {
         init();//инициализация текущего окна
         loop();//Главный цикл движка
 
-        //освобождаем память
+
+        //освобождаем память==========================
+        alcDestroyContext(audioContext);
+        alcCloseDevice(audioDevice);
+
         glfwFreeCallbacks(glfwWindow);
         glfwDestroyWindow(glfwWindow);
 
@@ -150,6 +162,23 @@ public class Window implements Observer {
         glfwSwapInterval(1);
         //делаем окно видимым
         glfwShowWindow(glfwWindow);
+
+
+        //инициализация аудио библиотек===========
+        String defaultDeviceName = alcGetString(0, ALC_DEFAULT_DEVICE_SPECIFIER);//имя дефолтного аудио девайса
+        audioDevice = alcOpenDevice(defaultDeviceName);
+
+        int[] attributes = {0}; //здесь можно задавать настройки аудио
+        audioContext = alcCreateContext(audioDevice, attributes);//объявление аудиоконтекста
+        alcMakeContextCurrent(audioContext);
+
+        ALCCapabilities alcCapabilities = ALC.createCapabilities(audioDevice);
+        ALCapabilities alCapabilities = AL.createCapabilities(alcCapabilities);
+
+        if(!alCapabilities.OpenAL10 ){
+            assert false: "ERROR: Audio library not supported.";
+        }
+        //========================================
 
         GL.createCapabilities();
 
@@ -257,6 +286,10 @@ public class Window implements Observer {
             case SaveLevel -> {
                 currentScene.save();
             }
+            case LoadFileTexture -> {
+
+            }
+
         }
     }
 }

@@ -5,5 +5,8 @@ public enum EventType {
     GameEngineStopPlay,
     SaveLevel,
     LoadLevel,
-    UserEvent
+    UserEvent,
+    LoadFileTexture,
+    LoadFileAnimation,
+    LoadFileSound
 }

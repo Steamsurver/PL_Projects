@@ -1,6 +1,6 @@
 package org.engine.Rendering.Objects.Components;
 
-import org.engine.Rendering.Objects.Components.Textures.Texture;
+import org.engine.Rendering.Assets.Texture.Texture;
 import org.joml.Vector2f;
 //TODO для дефолтного спрайта можно сделать что-нибудь вроде текстуры ошибки
 

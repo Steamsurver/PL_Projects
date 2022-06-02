@@ -21,8 +21,8 @@ public class Prefabs {
         return block;
     }
 
-    public static GameObject generateCharacterAnimation(int from, int to, String title) {//создание анимации персонажа
-        SpriteSheet animationSprite = AssetsPool.getSpriteSheet("src/main/java/org/engine/Resources/Textures/Animations/playerA.png");
+    public static GameObject generateCharacterAnimation(int from, int to, String title, String path) {//создание анимации персонажа
+        SpriteSheet animationSprite = AssetsPool.getSpriteSheet(path);
         GameObject character = generateSpriteObject(animationSprite.getSprite(0), 0.25f, 0.5f);
 
         AnimationState run = new AnimationState();

@@ -14,14 +14,14 @@ public class GridLines extends Component {
         Vector2f cameraPos = camera.position;
         Vector2f projectionSize = camera.getProjectionSize();
 
-        float firstX = ((int)Math.floor(cameraPos.x / Settings.GRID_WIDTH) - 1) * Settings.GRID_HEIGHT;//координата х откуда будут рисоваться первые линии
-        float firstY = ((int)Math.floor(cameraPos.y / Settings.GRID_HEIGHT) - 1) * Settings.GRID_HEIGHT;//координата y откуда будут рисоваться первые линии
+        float firstX = ((int)Math.floor(cameraPos.x / Settings.GRID_WIDTH)) * Settings.GRID_HEIGHT;//координата х откуда будут рисоваться первые линии
+        float firstY = ((int)Math.floor(cameraPos.y / Settings.GRID_HEIGHT)) * Settings.GRID_HEIGHT;//координата y откуда будут рисоваться первые линии
 
         int numVtLines = (int)(projectionSize.x * camera.getZoom() / Settings.GRID_WIDTH) + 2;//вертикальные линии
         int numHzLines = (int)(projectionSize.y * camera.getZoom() / Settings.GRID_HEIGHT) + 2;//горизонтальные линии
 
-        float width = (int)(projectionSize.x * camera.getZoom())+ Settings.GRID_WIDTH * 2;//ширина до куда будут рисоваться линии
-        float height = (int)(projectionSize.y * camera.getZoom()) + Settings.GRID_HEIGHT * 2;//высота до куда будут рисоваться линии
+        float width = (int)(projectionSize.x * camera.getZoom()) + (5 * Settings.GRID_WIDTH);//ширина до куда будут рисоваться линии
+        float height = (int)(projectionSize.y * camera.getZoom()) + (5 * Settings.GRID_HEIGHT);//высота до куда будут рисоваться линии
 
         int maxLines = Math.max(numVtLines, numHzLines);
         Vector3f color = new Vector3f(0, 0, 0);

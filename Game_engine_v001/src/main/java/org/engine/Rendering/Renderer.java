@@ -2,7 +2,7 @@ package org.engine.Rendering;
 
 
 import org.engine.Rendering.Objects.Components.SpriteRender;
-import org.engine.Rendering.Objects.Components.Textures.Texture;
+import org.engine.Rendering.Assets.Texture.Texture;
 import org.engine.Rendering.Objects.GameObject;
 import org.engine.Rendering.Shaders.Shader;
 

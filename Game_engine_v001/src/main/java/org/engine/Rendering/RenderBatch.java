@@ -2,10 +2,9 @@ package org.engine.Rendering;
 
 import org.engine.GameElements.Window;
 import org.engine.Rendering.Objects.Components.SpriteRender;
-import org.engine.Rendering.Objects.Components.Textures.Texture;
+import org.engine.Rendering.Assets.Texture.Texture;
 import org.engine.Rendering.Objects.GameObject;
 import org.engine.Rendering.Shaders.Shader;
-import org.engine.Resources.Utils.AssetsPool;
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector4f;

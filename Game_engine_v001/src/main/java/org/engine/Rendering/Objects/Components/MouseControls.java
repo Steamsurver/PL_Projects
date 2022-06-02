@@ -17,6 +17,7 @@ public class MouseControls extends Component {
     //значения для сброса
     private float debounceTime = 0.05f;
     private float debounce = debounceTime;
+    private transient GameObject lastPickedObj = null;
 
     public void pickupObject(GameObject go){
         if(this.holdingObject != null){
@@ -38,7 +39,21 @@ public class MouseControls extends Component {
 
         newObj.getComponent(SpriteRender.class).setColor(new Vector4f(1, 1, 1, 1));
         newObj.removeComponent(NonPickable.class);
-        Window.getCurrentScene().addGameObjectToScene(newObj);
+
+        //проверка, чтоб не дублировались объекты
+        if(lastPickedObj == null) {
+            Window.getCurrentScene().addGameObjectToScene(newObj);
+        }
+        else{
+            if (newObj.transform.position.x == lastPickedObj.transform.position.x && newObj.transform.position.y == lastPickedObj.transform.position.y) {
+                //Window.getCurrentScene().addGameObjectToScene(newObj);
+            }else{
+                Window.getCurrentScene().addGameObjectToScene(newObj);
+            }
+        }
+
+
+        lastPickedObj = newObj;
     }
 
     @Override
@@ -49,7 +64,6 @@ public class MouseControls extends Component {
             float y = MouseListener.getWorldY();
             holdingObject.transform.position.x = ((int)Math.floor(x / Settings.GRID_WIDTH) * Settings.GRID_WIDTH) + Settings.GRID_WIDTH / 2.0f;
             holdingObject.transform.position.y = ((int)Math.floor(y / Settings.GRID_HEIGHT) * Settings.GRID_HEIGHT) + Settings.GRID_HEIGHT / 2.0f;
-
 
         if(MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)){
             place();

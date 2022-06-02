@@ -121,28 +121,30 @@ public class TranslateGizmo extends Component {
         //реализация перемещения объекта
         if (activeGameObject != null) {
             //изменяем координаты в зависсимости от пройденного растояния мыши
-            if (xAxisActive) {
-                activeGameObject.transform.position.x -= MouseListener.getWorldX();
-            } else if (yAxisActive) {
-                activeGameObject.transform.position.y -= MouseListener.getWorldY();
+            if (xAxisActive && !yAxisActive) {
+                activeGameObject.transform.position.x -= MouseListener.getWorldDx();
+            } else if (yAxisActive && !xAxisActive) {
+                activeGameObject.transform.position.y -= MouseListener.getWorldDy();
             }
+            MouseListener.endFrame();
         }
 
         //реализация изменения размера объекта
         if (activeGameObject != null) {
+
             //изменяем размер в зависсимости от пройденного растояния мыши
-            if (xAxisSizeActive) {
-                activeGameObject.transform.scale.x -= MouseListener.getWorldX();
-            } else if (yAxisSizeActive) {
-                activeGameObject.transform.scale.y -= MouseListener.getWorldY();
+            if (xAxisSizeActive && !yAxisSizeActive) {
+                activeGameObject.transform.scale.x -= MouseListener.getWorldDx();
+                System.out.println(MouseListener.getWorldDx());
+            } else if (yAxisSizeActive && !xAxisSizeActive) {
+                activeGameObject.transform.scale.y -= MouseListener.getWorldDy();
             }
+            MouseListener.endFrame();
         }
     }
 
     private boolean checkXHoverState() {//проверка, находится мышь над gizmo x стреле
         Vector2f mousePos = MouseListener.getWorld();
-        System.out.println(xAxisObject.transform.position.x + "  " + xAxisObject.transform.position.y + "    " + MouseListener.getWorldX() + " " + MouseListener.getWorldY());
-
         if ((mousePos.x <= xAxisObject.transform.position.x + (gizmoHeight / 2f) &&
                 mousePos.x >= xAxisObject.transform.position.x - (gizmoWidth / 2f) &&
                 mousePos.y >= xAxisObject.transform.position.y - (gizmoHeight / 6f)&&

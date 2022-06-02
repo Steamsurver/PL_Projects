@@ -1,6 +1,6 @@
 package org.engine.Rendering.Objects.Components;
 
-import org.engine.Rendering.Objects.Components.Textures.Texture;
+import org.engine.Rendering.Assets.Texture.Texture;
 import org.joml.Vector2f;
 
 
@@ -10,12 +10,22 @@ import java.util.List;
 public class SpriteSheet {
 
     private Texture texture;
-    private List<Sprite> spriteContainer;
+    private int spriteWidth;
+    private int spriteHeight;
+    private int numSprites;
+    private int spacing;
+
+    private transient List<Sprite> spriteContainer;
 
     public SpriteSheet(Texture texture, int spriteWidth, int spriteHeight, int numSprites, int spacing){
         this.spriteContainer = new ArrayList<>();
 
         this.texture = texture;
+        this.spriteWidth = spriteWidth;
+        this.spriteHeight = spriteHeight;
+        this.numSprites = numSprites;
+        this.spacing = spacing;
+
         int currentX = 0; //место откуда начинается отсчет по координате x
         int currentY = texture.getHeight() - spriteHeight; //место откуда начинается отсчет по координате y
         //int currentY = spriteHeight

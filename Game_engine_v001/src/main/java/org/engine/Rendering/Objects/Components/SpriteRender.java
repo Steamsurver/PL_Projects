@@ -1,7 +1,7 @@
 package org.engine.Rendering.Objects.Components;
 
 import imgui.ImGui;
-import org.engine.Rendering.Objects.Components.Textures.Texture;
+import org.engine.Rendering.Assets.Texture.Texture;
 import org.engine.Resources.Utils.AssetsPool;
 import org.joml.Vector2f;
 import org.joml.Vector4f;

@@ -68,6 +68,7 @@ public class EditorCamera extends Component {
                 this.levelEditorCamera.setZoom(1.0f);
                 reset = false;
             }
+            MouseListener.endFrame();
         }
     }
 }

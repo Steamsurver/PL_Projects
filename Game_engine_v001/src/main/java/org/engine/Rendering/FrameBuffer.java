@@ -1,6 +1,6 @@
 package org.engine.Rendering;
 
-import org.engine.Rendering.Objects.Components.Textures.Texture;
+import org.engine.Rendering.Assets.Texture.Texture;
 
 import static org.lwjgl.opengl.GL30.*;
 

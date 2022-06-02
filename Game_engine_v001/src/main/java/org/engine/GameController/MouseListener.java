@@ -44,8 +44,8 @@ public class MouseListener {
 
         get().lastX = get().xPos;
         get().lastY = get().yPos;
-        get().lastWorldX = get().worldX;
-        get().lastWorldY = get().worldY;
+        get().lastWorldX = getWorldX();
+        get().lastWorldY = getWorldY();
         get().xPos = xpos;
         get().yPos = ypos;
 
@@ -82,14 +82,16 @@ public class MouseListener {
     }
 
     public static float getWorldDx() {
-        return (float)(get().lastWorldX - get().worldX);
+        return (float)(get().lastWorldX - getWorldX());
     }
 
     public static float getWorldDy() {
-        return (float)(get().lastWorldY - get().worldY);
+        return (float)(get().lastWorldY - getWorldY());
     }
 
-    public static float getScrollX() { return (float)get().scrollX; }
+    public static float getScrollX() {
+        return (float)get().scrollX;
+    }
 
     public static float getScrollY() {
         return (float)get().scrollY;
@@ -113,13 +115,14 @@ public class MouseListener {
         return getWorld().y;
     }
 
+
     public static void endFrame() {
         get().scrollX = 0;
         get().scrollY = 0;
         get().lastX = get().xPos;
         get().lastY = get().yPos;
-        get().lastWorldX = get().worldX;
-        get().lastWorldY = get().worldY;
+        get().lastWorldX = getWorldX();
+        get().lastWorldY = getWorldY();
     }
 
     public static Vector2f getWorld() {

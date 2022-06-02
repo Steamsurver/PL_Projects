@@ -6,7 +6,7 @@ import org.engine.Physics2D.components.Box2DCollider;
 import org.engine.Physics2D.components.Circle2DCollider;
 import org.engine.Physics2D.components.RigidBody2D;
 import org.engine.Rendering.Objects.Components.NonPickable;
-import org.engine.Rendering.Objects.Components.Textures.PickingTexture;
+import org.engine.Rendering.Assets.Texture.PickingTexture;
 import org.engine.Rendering.Objects.GameObject;
 import org.engine.scenes.Scene;
 
@@ -24,7 +24,6 @@ public class PropertiesWindow {
 
     public void update(float dt, Scene currentScene){
         debounce -= dt;
-
         if(!MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0){
             int x = (int)MouseListener.getScreenX();
             int y = (int)MouseListener.getScreenY();
